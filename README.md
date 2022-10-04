@@ -34,11 +34,11 @@ Une autre alternative pour lancer le serveur sans mise a jour automatique
 
     npm start
 
-Une fois le serveur lancé, `localhost:8080`.
+Une fois le serveur lancé, http://localhost:8080.
 
 ## Routing utilisations
 
-Un systeme de routing a été mis en place pour ce Lab2. Afin d'acceder a la notice d'utilisation de ces derniers cliquez sur `localhost:8080/hello`.
+Un systeme de routing a été mis en place pour ce Lab2. Afin d'acceder a la notice d'utilisation de ces derniers cliquez sur http://localhost:8080/hello.
 
 ## Auteurs
 
