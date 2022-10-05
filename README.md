@@ -6,18 +6,18 @@ Ce lab est une introduction a l'utilisation de node.js et de ses modules.
 
 Sources utilisées:
 
-* <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/index.md>
-* <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/lab.md>
-* <https://dev.to/scottydocs/how-to-write-a-kickass-readme-5af9>
+- <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/index.md>
+- <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/lab.md>
+- <https://dev.to/scottydocs/how-to-write-a-kickass-readme-5af9>
 
 
 ## Installation
 
-* Installer un IDE tel que [VisualStudioCode](https://code.visualstudio.com/)
-* Installer Node.js voir [ prerequisites](https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/01.prerequisite/index.md#nodejs-installation)
-* Installer nodemon
+- Installer un IDE tel que [VisualStudioCode](https://code.visualstudio.com/)
+- Installer Node.js voir [ prerequisites](https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/01.prerequisite/index.md#nodejs-installation)
+- Installer nodemon
 
-```
+```bash
 npm install nodemon
 ```
 
@@ -27,13 +27,13 @@ npm install nodemon
 Nous devons lancer le serveur avant d'essayer d'acceder au site en local.
 
 La commande suivante permet de lancer le site web de maniere a update toute les modifications sans necessairement relancer le serveur.
-
-    npm run develop
-
+```bash
+npm run develop
+```
 Une autre alternative pour lancer le serveur sans mise a jour automatique 
-
-    npm start
-
+```bash
+npm start
+```
 Une fois le serveur lancé, http://localhost:8080.
 
 ## Routing utilisations
