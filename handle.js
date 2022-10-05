@@ -4,7 +4,6 @@ let about = require('./content/about.json')
 const fs =require("fs")
 
 
-
 module.exports = {
     serverHandle: function (req, res) {
       
@@ -14,7 +13,6 @@ module.exports = {
           
             res.writeHead(200, {'Content-Type': 'text/plain'});
         
-           
             if (path === '/hello' && 'name' in params) 
             {
                 if (params['name']=="Fares")
@@ -35,11 +33,15 @@ module.exports = {
             {            
               res.write(about.title+"\n\n"+about.author+"\n\n "+about.content+"\n\n"+about.date);
             }
+            else if (path==="/")
+            {
+                    res.write('Bonjour Bienvenue')
+            }  
             else
             {
-                    res.write('Error 404')
+                res.write('Error 404')
 
-            }   
+            }
             res.end();
     } 
   }
