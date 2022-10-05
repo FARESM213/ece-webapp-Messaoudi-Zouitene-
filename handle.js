@@ -25,13 +25,13 @@ module.exports = {
 
                 }
             } 
-            else if (path === '/hello')
+            else if (path ==='/hello')
             {
                 res.write('Pour utiliser votre name, vous devez entrer "/hello?name= "votre nom" ')
             }
             else if (path === '/about')
-            {            
-              res.write(about.title+"\n\n"+about.author+"\n\n "+about.content+"\n\n"+about.date);
+            {          
+              res.write(JSON.stringify(about))  
             }
             else if (path==="/")
             {
