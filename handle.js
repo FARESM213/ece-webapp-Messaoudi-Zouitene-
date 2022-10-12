@@ -35,7 +35,8 @@ let db = {
   }
 
 app.get('/hello',(req,res)=>{
-    res.send("hello word");
+    res.send("Bpnjour, pour avoir un effet perso tappez /hello/name= suivit de votre pronom ( tout ca apres le localhost )\n"+
+    "Tappez /about pour decouvir le fichier JSON");
 });
 
 app.get('/',(req,res)=>{
@@ -57,6 +58,16 @@ app.get('/hello/name=:username', (req, res) => {
   })
 
   /***************** ARTICLES ******************/
+  app.get("/help", (req, res) => {
+
+    res.send("Pour acceder a tout les arcticles de la base de donné, entrez la route /articles \n"
+    +" Afin de chercher un articles selon son ID : /articles/ suivi de l'ID de ce dernier \n"+
+    "Pour pouvoir post un article vous devrez vous munir de postman et entre /articles, verifiez vos resultats directement"+
+    "le browser par la suite"+
+    "Vous pouvez chercher les commentaires de cet articles grace a /article/l'id de votre article/comments "+
+    "ou encore /article/l'id de votre article/comments/l'id de votre comment \n"+
+    " Enfin le post des commentaires est identique a selon d'un article");
+  });
 app.get("/articles", (req, res) => {
 
     res.send(db.articles);
