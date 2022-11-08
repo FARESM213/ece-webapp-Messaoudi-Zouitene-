@@ -1,0 +1,21 @@
+{
+    "Articles":
+    [
+        { 
+            "IMEI": 76543234567654,
+            "Models":"Iphone 13",
+            "Stockage" : 128,
+            "Couleur" : "Rouge",
+            "Photo":"https://www.123comparer.fr/photoProd/zoom/3343/apple-iphone-13-256go-product-red-302747111.png"
+        },
+        {
+            "IMEI": 765433546765,
+            "Models":"Ipad Mini 3",
+            "Stockage" : 256,
+            "Couleur" : "Gris",
+            "Photo":"https://www.backmarket.fr/cdn-cgi/image/format=auto,quality=75,width=1920/https://d1eh9yux7w8iql.cloudfront.net/product_images/304345_2a60ab2e-8178-4303-b2a9-945f0d319e18.jpg"
+        }
+    ]
+}
+
+
