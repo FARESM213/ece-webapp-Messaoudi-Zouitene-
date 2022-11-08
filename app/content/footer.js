@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import styles from '../styles/*.module.css'
+import styles from '../styles/s.module.css'
 
 export default function Footer() {
   return (
      <div >
-        
       <footer className={styles.footer} >
       <Link href="/about"> 
            <a> About

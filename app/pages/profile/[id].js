@@ -1,30 +1,38 @@
+import Footer from '../../content/footer.js'
+import Header from '../../content/header'
 
-import Footer from '../content/footer.js'
-import Header from '../content/header'
+export const getStaticPaths = async ()=>{
+    const res= await fetch('http://localhost:3001/users')
+    const data= await res.json();
+    const paths=data.map(user=>{
+        return {
+            params : {id:user.id.toString()}
+        }
+    })
 
-
-export const getStaticProps =async ()=>{
-  const res= await fetch('http://localhost:3001/users')
-  const data= await res.json();
-
-  return {
-    props:{users : data}
-
-  }
+    return {
+        paths,
+        fallback:false
+    }
 }
-export default function profile({users}) {
+
+export const getStaticProps=async(context)=>{
+    const id=context.params.id;
+    console.log('http://localhost:3001/users/'+id);
+    const res= await fetch('http://localhost:3001/users/'+id)
+    const data =await res.json(); 
+    return {     
+        props:{user:data}
+    }
+}
+
+const Details = ({user})=>{
     return (
-      <div >
-    <Header> Articles</Header>
-        <main >
-          <h1 >
-           Articles 
-          </h1>  <br></br>
-          <p class="italic font-bold"> Cette page est destinée aux utilisateurs</p>
+        <div>
+            <h1> Details page</h1>
+            <Header/>
 
-        <div >
-          { users.map(user =>(
-
+            <div >
               <div key={user.id} >           
                            <a href="#" class="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                                <div class="flex flex-col justify-between p-4 leading-normal">
@@ -38,15 +46,12 @@ export default function profile({users}) {
                                </div>
                            </a>
                 </div>
-
-          ))
-          
-          }
           </div>
-        </main>
-  
-             <Footer/>
+          <Footer/>
 
-    </div>
-  )
+        </div>
+
+    );
 }
+
+export default Details;
