@@ -7,19 +7,8 @@ import Link from 'next/link.js'
 export const getStaticProps =async ()=>{
   
 
-  const res= await fetch('http://localhost:3001/users')
+  const res= await fetch('http://localhost:8000/use')
   const data= await res.json();
-  //const { userID } = router.query
-
-  /*for (var i=0, iLen=data.length; i<iLen; i++) 
-  {
-
-    if (//data[i].id == userID)
-    {
-      //const fin= arr[i];
-    } 
-  }*/
-
   return {
     props:{users : data}
 

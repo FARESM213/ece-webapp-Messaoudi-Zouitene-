@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/s.module.css'
-import Footer from '../content/footer.js'
-import Header from '../content/header'
+import styles from '../../styles/s.module.css'
+import Footer from '../../content/footer.js'
+import Header from '../../content/header'
 
 
 export const getStaticProps =async ()=>{
