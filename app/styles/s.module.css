@@ -1,81 +1,80 @@
 .footer {
-    @apply flex p-10 border-t-[0px] ring ring-yellow-500 ring-offset-1 ring-offset-slate-50 dark:ring-offset-slate-900 justify-center items-center absolute bottom-0 w-full h-8 grid grid-cols-4 gap-0 ;}
-  
+  @apply flex p-10 border-t-[0px] ring ring-yellow-500 ring-offset-1 ring-offset-slate-50 dark:ring-offset-slate-900 justify-center items-center absolute bottom-0 w-full h-8 grid grid-cols-4 gap-0 ;}
+
 .footer a {
-    @apply flex justify-center items-center grow-0  text-xl ;
-  }
+  @apply flex justify-center items-center grow-0  text-xl ;
+}
 
 
- .container 
- { 
-   @apply py-0  px-8
- }
+.container 
+{ 
+ @apply py-0  px-8
+}
 
 .main{
 
-  @apply flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16
+@apply flex flex-col items-center justify-center flex-grow min-h-screen px-0 py-16
 }
 
 .title a {
- @apply no-underline;
-  
- color: rgba(0, 112, 243, 1);
+@apply no-underline;
+
+color: rgba(0, 112, 243, 1);
 
 }
 
 
 .title a:active
 {
-  @apply underline
+@apply underline
 }
 
 .title {
-  @apply text-6xl m-0;
-  line-height: 1.15;
+@apply text-6xl m-0;
+line-height: 1.15;
 }
 
 .title, .description 
 {
-  @apply text-center
+@apply text-center
 
 }
 
 .description{
-  @apply text-2xl leading-normal mx-0 my-16
+@apply text-2xl leading-normal mx-0 my-16
 
 }
 
 
 .grid 
 {
-  @apply flex-col w-full
+@apply flex-col w-full
 
 }
 
 .card {
-  @apply border-solid border m-4 p-6 text-left no-underline;
-  border-color: rgba(234, 234, 234, 1);
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 350px;
-  min-height: 200px;
+@apply border-solid border m-4 p-6 text-left no-underline;
+border-color: rgba(234, 234, 234, 1);
+border-radius: 10px;
+transition: color 0.15s ease, border-color 0.15s ease;
+max-width: 350px;
+min-height: 200px;
 }
 
 
- .card h2
- {
-    @apply text-2xl mx-0 mt-0 mb-4
- }
+.card h2
+{
+  @apply text-2xl mx-0 mt-0 mb-4
+}
 
 
 .card p
 {
-   @apply text-xl leading-normal m-0
- }
+ @apply text-xl leading-normal m-0
+}
 
 
 .card li {
-  @apply text-xl m-0;
-  line-height: 1.2;
+@apply text-xl m-0;
+line-height: 1.2;
 }
-
