@@ -4,6 +4,29 @@ const about = require('./content/about.json')
 const app=require("express").Router();
 const { v4: uuidv4 } = require('uuid');
 
+let users=
+  [
+    {
+      id: 1,
+      name: "Leanne Graham",
+      username: "Bret",
+      email: "Sincere@april.biz"
+      
+    },
+    {
+      id: 2,
+      name: "Ervin Howell",
+      username: "Antonette",
+      email: "Shanna@melissa.tv"
+    },
+    {
+      id: 3,
+      name: "Clementine Bauch",
+      username: "Samantha",
+      email: "Nathan@yesenia.net"
+    }
+  ];
+
 let db = {
     articles: [
       {
@@ -34,6 +57,20 @@ let db = {
     ]
   }
 
+
+
+
+
+
+app.get('/use',(req,res)=>{
+  res.json(users);
+});
+app.get("/use/:useID", (req, res) => {
+    res.json(users.find(user=> user.id == req.params.useID));
+})
+
+
+
 app.get('/hello',(req,res)=>{
     res.send("Bpnjour, pour avoir un effet perso tappez /hello/name= suivit de votre pronom ( tout ca apres le localhost )\n"+
     "Tappez /about pour decouvir le fichier JSON");
@@ -42,6 +79,8 @@ app.get('/hello',(req,res)=>{
 app.get('/',(req,res)=>{
     res.send("Bonjour Bienvenue'");
 });
+
+
 
 app.get('/about',(req,res)=>{
     res.send(JSON.stringify(about))  
@@ -106,6 +145,8 @@ app.get("/articles", (req, res) => {
     res.send("POST SUCCED");
 
   });
+
+  app.get("")
 
   app.get("/articles/:articleId/comments/:commentId", (req, res) => {
 
