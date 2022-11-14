@@ -4,11 +4,11 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Footer from '../content/footer.js'
 import Header from '../content/header'
-import car from '../public/afrique.png'
 
 
 
-export default function Home() {
+
+export default function amerique() {
   return (
     <div className={styles.container}>
       <Head>
@@ -19,27 +19,21 @@ export default function Home() {
       <Header/>
       
       <main className={styles.main} >
-        
-      
-        <h1 className={styles.title}>
-          <img src="lol.png" width="400" length="400" alt="amerique image"/>
-        </h1>
-        
-        <p className={styles.description}>
+      <p className={styles.description}>
         <a  className={styles.card}>
-         <strong>Choose your continent and Find which teams have qualified for Qatar tournament ! </strong> 
+         <strong>Choose which teams you want to know more about ! </strong> 
          </a>
         </p>  
 
-        <div className={styles.grid}>
-        <a href="/amerique"
+      <div className={styles.grid}>
+        <a href="/usa"
             className={styles.card}>
-            <h2>America &rarr;</h2>
+            <h2>USA &rarr;</h2>
             <img src="amerique.png" width="400" length="400" alt="amerique image"/>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Africa &rarr;</h2>
+            <h2>Canada &rarr;</h2>
             <img src="afrique.png" width="400"  length="400"  alt="afrique image"/>
           </a>
 
@@ -47,16 +41,18 @@ export default function Home() {
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
           >
-            <h2>Asia &rarr;</h2>
+            <h2>Mexique &rarr;</h2>
             <img src="asiii2.png" width="400" length="400" alt="asia image"/>
           </a>
 
          
           <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Europe &rarr;</h2>
+            <h2>Costa Rica &rarr;</h2>
             <img src="europe12.png" width="400" length="400" alt="europe image"/>
           </a>
         </div>
+        
+      
       </main>
       
       <p className={styles.description}>
@@ -72,10 +68,3 @@ export default function Home() {
     </div>
   )
 }
-
-
-
-   
-  
-
-   

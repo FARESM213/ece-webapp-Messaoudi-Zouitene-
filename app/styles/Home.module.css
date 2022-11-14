@@ -70,11 +70,10 @@
 
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+  display: grid;
+  align-items: stretch;
+  grid-gap : 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .card {
