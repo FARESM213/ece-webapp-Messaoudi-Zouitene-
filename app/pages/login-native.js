@@ -26,5 +26,5 @@ export default function Login()
         </div>
       </form>
     )
-    
+
   }

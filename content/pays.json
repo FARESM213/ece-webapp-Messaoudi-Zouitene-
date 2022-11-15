@@ -1,0 +1,54 @@
+{
+  "Pays": 
+  [
+    {
+      "pname" : "America", 
+      "continent":
+       [
+          {
+            "name": "Usa",
+            "img": "usa.png",
+            "alt": "Amerique image",
+            "img2":"../usa.png",
+            "group":"Groupe B",
+            "Entraineur":"Gregg Berhalter",
+            "Gardiens":"Ethan Horvath (Luton Town/ANG), Matt Turner (Arsenal/ANG),Sean Johnson (New York City FC) ",
+            "Attaquants" : "Jesus Ferreira (Dallas), Jordan Morris (Seattle Sounders), Christian Pulisic (Chelsea/ANG), Giovanni Reyna (Borussia Dortmund/ALL), Josh Sargent (Norwich/ANG), Timothy Weah (Lille/FRA), Haji Wright (Antalyaspor/TUR)",
+            "Milieux":" Brenden Aaronson (Leeds/ANG), Kellyn Acosta (Los Angeles FC), Tyler Adams (Leeds/ANG), Luca de la Torre (Celta Vigo/ESP), Weston McKennie (Juventus Turin/ITA), Yunus Musah (Valence/ESP), Cristian Roldan (Seattle Sounders)",            
+            "Defenseurs": "Tim Ream (Fulham/ANG), Sergiño Dest (AC Milan/ITA), Antonee Robinson (Fulham/ANG), Cameron Carter-Vickers (Celtic Glasgow/ECO), Walker Zimmerman (Nashville),DeAndre Yedlin (Inter Miami), Shaquell Moore (Nashville SC), Joe Scally (Mönchengladbach/ALL), Aaron Long (New York Red Bulls)"
+          },
+          {
+            "name": "DFGHJGF",
+            "img": "canada.png",
+            "alt": "canada image"
+          },
+          {
+            "name": "Mexico",
+            "img": "asiii2.png",
+            "alt": "Mexique image"
+          },
+          {
+            "name": "CostaRica",
+            "img": "europe12.png",
+            "alt": "Amerique image"
+          }
+        ]
+    },
+    {
+      "pname" : "Americo", 
+      "continent":
+       [
+          {
+            "name": "Usa",
+            "img": "amerique.png",
+            "alt": "Amerique image"
+          },
+          {
+            "name": "Canada",
+            "img": "canada.png",
+            "alt": "canada image"
+          }
+        ]
+    }
+  ]
+}

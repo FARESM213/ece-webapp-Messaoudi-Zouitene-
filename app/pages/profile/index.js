@@ -17,7 +17,6 @@ export const getStaticProps =async ()=>{
 export default function profile({users}) {
     return (
       <div >
-    <Header> Articles</Header>
         <main >
           <h1 >
            Articles 
@@ -46,8 +45,6 @@ export default function profile({users}) {
           }
           </div>
         </main>
-  
-             <Footer/>
 
     </div>
   )

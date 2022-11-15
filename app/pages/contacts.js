@@ -9,10 +9,6 @@ import Header from '../content/header.js'
 export default function contacts() {
   return (
     <div >
-           
-      
-      <Header> Contacts</Header>
-
       <main >
         <h1>
         Contacts
@@ -40,8 +36,6 @@ export default function contacts() {
           </div>          
         </div>
       </main>
-
-      <Footer />
 
     </div>
   )

@@ -30,7 +30,6 @@ const Details = ({user})=>{
     return (
         <div>
             <h1> Details page</h1>
-            <Header/>
 
             <div >
               <div key={user.id} >           
@@ -47,7 +46,6 @@ const Details = ({user})=>{
                            </a>
                 </div>
           </div>
-          <Footer/>
 
         </div>
 

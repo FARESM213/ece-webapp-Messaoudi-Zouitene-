@@ -4,6 +4,10 @@ const about = require('./content/about.json')
 const app=require("express").Router();
 const { v4: uuidv4 } = require('uuid');
 
+let pays=require('./content/pays.json');
+
+pays=pays.Pays;
+
 let users=
   [
     {
@@ -57,16 +61,32 @@ let db = {
     ]
   }
 
-
-
-
-
-
 app.get('/use',(req,res)=>{
   res.json(users);
+  
 });
+
+
 app.get("/use/:useID", (req, res) => {
-    res.json(users.find(user=> user.id == req.params.useID));
+  res.json(users.find(user=> user.id == req.params.useID));
+})
+
+
+app.get('/',(req,res)=>{
+  res.json(pays);
+});
+
+app.get("/:continentname", (req, res) => {
+  let resultat=pays.find(pays=>pays.pname ==req.params.continentname).continent;
+  res.json(resultat);
+  })
+
+
+app.get("/:continentname/:paysname", (req, res) => {
+
+  let resultat=pays.find(pays=>pays.pname ==req.params.continentname).continent;
+  res.json(resultat.find(resultat=>resultat.name ==req.params.paysname));
+
 })
 
 

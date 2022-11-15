@@ -8,7 +8,6 @@ export default function About() {
   return (
     <div >
         
-      <Header> About US </Header>
       <main >
         <h1 >
          About us 
@@ -33,7 +32,6 @@ export default function About() {
         </div>
       </main>
 
-     <Footer/>
     </div>
   )
 }
