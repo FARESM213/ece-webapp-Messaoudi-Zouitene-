@@ -18,6 +18,7 @@ export default function Home() {
         <h1 className={styles.title}>
           <img src="lol.png" width="400" length="400" alt="amerique image"/>
         </h1>
+        VREVERVETBRTBRT
         
         <p className={styles.description}>
         <a  className={styles.card}>
