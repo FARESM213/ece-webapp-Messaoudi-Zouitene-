@@ -8,7 +8,7 @@ export default function LoggedIn() {
     <div>
       Welcome {user}!
       <div>
-        <button onClick={async()=>{logout()}}>Logout</button>
+        <button onClick={()=>{logout()}}>Logout</button>
       </div>
     </div>
   )

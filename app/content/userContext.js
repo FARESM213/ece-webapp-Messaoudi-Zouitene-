@@ -1,7 +1,6 @@
 import {createContext, useState} from 'react'
 
 const Context = createContext()
-
 export default Context
 
 export const ContextProvider = ({children}) => {
@@ -19,6 +18,7 @@ export const ContextProvider = ({children}) => {
       }}
     >
       {children}
+
     </Context.Provider>
   )
 }
