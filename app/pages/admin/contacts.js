@@ -10,7 +10,6 @@ const contactPage = () => {
     async function loadData() {
     const { data } = await supabaseClient.from('contacts').select('*')
      setData(data)
-      console.log(data);
     }
     // Only run query once user is logged in.
     loadData()
@@ -24,7 +23,22 @@ const contactPage = () => {
     const lastname=event.target.lastname.value;
     const message=event.target.message.value;
     const date = new Date();
-    const { error } = await supabaseClient.from('contacts').insert({created_at: date,firstname:firstname,lastname:lastname,email: email,message:message})
+
+    if((date)&&(email)&&(firstname)&&(lastname)&&(message))
+    {
+          const { error } = await supabaseClient.from('contacts').insert({created_at: date,firstname:firstname,lastname:lastname,email: email,message:message})
+          if({error})
+          {
+            alert(" Lutilisateur vient d'etre ajouté a la base de donnees ");
+          }
+  }
+    else
+    {
+      alert(" L'un des champs est vide ");
+
+    }
+   
+  
   }
 
   return (

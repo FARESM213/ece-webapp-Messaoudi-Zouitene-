@@ -7,12 +7,9 @@ import LoggedOut from './LoggedOut'
 import Context from './userContext'
 
 export default function Header() {
-  const {user} = useContext(Context)
   return (
 
     <header>
-       <div>{user ? <LoggedIn/>:<LoggedOut/>}</div>
-
         <div class="header">
         <a  class="logo" > <img src="../logoooo.png" width="200" ></img></a>
         <div class="header-right">

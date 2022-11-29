@@ -1,11 +1,11 @@
 import { createServerSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
-import supabase from '../../../supabase'
 import { useEffect, useState } from 'react'
 
 export const getServerSideProps = async ({params}) => {
+  const supabaseClient = useSupabaseClient()
 
-const {data : contact,erreur}= await supabase.from('contacts').select('*').eq('id',params.id).single()
+const {data : contact,erreur}= await supabaseClient.from('contacts').select('*').eq('id',params.id).single()
 return {
     props :
     {
