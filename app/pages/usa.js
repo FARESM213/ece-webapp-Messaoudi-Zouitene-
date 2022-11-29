@@ -2,9 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/s.module.css'
-import Footer from '../content/footer.js'
-import Header from '../content/header'
-
 export default function usa() {
   return (
     <div className={styles.container}>

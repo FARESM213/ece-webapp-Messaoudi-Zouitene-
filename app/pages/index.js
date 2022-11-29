@@ -2,9 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/s.module.css'
-import Footer from '../content/footer.js'
-import Header from '../content/header'
-import car from '../public/afrique.png'
 
 
 
@@ -18,7 +15,6 @@ export default function Home() {
         <h1 className={styles.title}>
           <img src="lol.png" width="400" length="400" alt="amerique image"/>
         </h1>
-        VREVERVETBRTBRT
         
         <p className={styles.description}>
         <a  className={styles.card}>

@@ -1,4 +1,5 @@
 import Head from 'next/head' 
+import Link from 'next/link'
 import { useContext } from 'react'
 import styles from '../styles/s.module.css'
 import LoggedIn from './LoggedIn'
@@ -15,9 +16,9 @@ export default function Header() {
         <div class="header">
         <a  class="logo" > <img src="../logoooo.png" width="200" ></img></a>
         <div class="header-right">
-        <a class="active" href="/" >Home </a>
-        <a href="/contacts">Contact</a>
-        <a href="/about">About Us</a>
+        <Link class="active" href="/" >Home </Link>
+        <Link href="/contacts">Contact</Link>
+        <Link href="/about">About Us</Link>
         </div>
         </div> 
     </header>
