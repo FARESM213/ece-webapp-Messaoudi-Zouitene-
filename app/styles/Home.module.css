@@ -112,3 +112,72 @@
 }
 
 
+.headerA{
+	width: 30%;
+	margin:60px 20px 0px 50px;
+	color: white;
+	background: #57CBAB;
+	text-align: center;
+	border: 2px solid #57CBAB;
+	border-bottom: none;
+	border-radius: 10px 10px 0px 0px ;
+	padding: 20px;
+}
+
+
+.form{
+
+	width: 30%;
+	margin:0px 20px 0px 50px;
+	padding: 20px;
+	border: 1px solid #57CBAB;
+	background: white;
+	border-radius: 0px 0px 10px 10px;
+
+}
+
+
+.inputgroupA{
+	margin: 0px 10px 10px 0px;
+}
+ 
+.inputgroupA label{
+	display: block;
+	text-align: center;
+	margin: 3px;
+
+}
+
+.inputgroupA input{
+	height: 30px;
+	width: 93%;
+	padding: 50px 100px;
+	font-size: 16px;
+	border-radius: 5px;
+	border:2px solid rgb(73, 65, 65);
+
+}
+
+.btnA{
+
+	padding: 10px;
+	font-size: 15px;
+	color: white;
+	background: #5d6160;
+	border:none;
+	border-radius: 5px;
+
+}
+
+.liste{
+  height: 30px;
+	width: 93%;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border:1px solid grey;}
+
+
+
+
+
