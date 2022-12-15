@@ -1,5 +1,3 @@
-import Footer from '../../content/footer.js'
-import Header from '../../content/header'
 
 export const getStaticPaths = async ()=>{
     const res= await fetch('http://localhost:8000/use')
