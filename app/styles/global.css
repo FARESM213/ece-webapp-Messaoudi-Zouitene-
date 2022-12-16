@@ -15,7 +15,6 @@ background-color: rgba(241, 241, 241, 1)
 @apply float-left text-black text-center p-3 no-underline text-lg leading-6 rounded
 }
 
-
 .header a.logo {
 @apply text-2xl font-bold;
 font-weight: bold;
