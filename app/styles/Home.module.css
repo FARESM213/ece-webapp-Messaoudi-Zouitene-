@@ -162,11 +162,11 @@
 
 	padding: 10px;
 	font-size: 15px;
-	color: white;
+	color: black;
 	background: #5d6160;
 	border:none;
 	border-radius: 5px;
-
+  
 }
 
 .liste{
@@ -175,7 +175,9 @@
 	padding: 5px 10px;
 	font-size: 16px;
 	border-radius: 5px;
-	border:1px solid grey;}
+	border:1px solid grey;
+
+}
 
 
 

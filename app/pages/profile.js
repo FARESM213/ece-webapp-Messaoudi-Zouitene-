@@ -4,6 +4,7 @@ import Head from 'next/head'
 import UserContext from '../components/UserContext'
 import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
+
 export default function Contact() {
   const session= useSession()
   const { user, logout, loading } = useContext(UserContext)
@@ -11,10 +12,6 @@ export default function Contact() {
   useEffect(() => {
     if (!(user || loading)) {
       router.push('/Login')
-    }
-    else
-    {
-      
     }
   }, [user, loading, router])
   const onClickLogout = function() {
