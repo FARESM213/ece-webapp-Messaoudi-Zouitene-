@@ -24,7 +24,7 @@ export default function AjouterPays() {
         if(data==null)
         {
                 const { error } = await supabase.from('equipe')
-                .insert({ nom: equipe, coach:Entraineur,flag:victoire,creator: user.id })
+                .insert({ nom: equipe, coach:Entraineur,flag:victoire,user_id: user.id })
                 alert("L'equipe a bien été ajoutée")
                 router.push('/equipe')
         }else

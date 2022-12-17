@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import supabase from '../../supabase'
+import {getServiceSupabase} from '../../supabase'
 import UserContext from '../../components/UserContext'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 
 import styles from '../../styles/Home.module.css'
+
+const supabase=getServiceSupabase();
 
 export const getServerSideProps = async ({params}) => {
 
@@ -32,6 +34,7 @@ export default function Profile({ equipe }) {
       async function Delete(id) {
               
           const { error } = await supabase.from('equipe').delete().eq('id', id)
+
           alert('Equipe supprimé')
           router.push('/equipe')
 
@@ -54,11 +57,7 @@ export default function Profile({ equipe }) {
       router.push('/equipe')
     }
 
-    async function Update2(id) {
-       
-  }
-      
-      
+    
       if(user==null)
       {
         return ( 
@@ -71,13 +70,11 @@ export default function Profile({ equipe }) {
       else
       {
 
-        if(user.id==equipe.creator)
+        if(user.id==equipe.user_id)
         {
             return (
 
           <div>
-    
-          
           <div className={styles.inputgroupA}>
               <label>Nom de l'équipe</label>
               <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
