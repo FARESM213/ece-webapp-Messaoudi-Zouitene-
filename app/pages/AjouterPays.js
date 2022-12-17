@@ -15,16 +15,22 @@ export default function AjouterPays() {
     async function handleSubmit(event) {
         
         event.preventDefault();
-        const equipe = event.target.equipe.value;
-        const compo = event.target.Composition.value;
+        const equipe = event.target.equipe.value;   
         const Entraineur = event.target.Entraineur.value;
+
+
+        const compo = event.target.Composition.value;
+     
         const victoire = event.target.victoire.value;
+
+        /// Recuperer les valeurs du  reste des formes de la meme maniere que juste au dessus
+
         const {data,error}= await supabase.from('equipe').select("*").eq('nom', equipe).single()
 
         if(data==null)
         {
                 const { error } = await supabase.from('equipe')
-                .insert({ nom: equipe, coach:Entraineur,flag:victoire,user_id: user.id })
+                .insert({ nom: equipe, coach:Entraineur,flag:victoire,user_id: user.id }) /// Ici juste assigner les valeurs au truck de la base de donnes ( par exemple dans la bdd le nom de lequipe c'est "nom" et je lui donne la valeur "equipe")
                 alert("L'equipe a bien été ajoutée")
                 router.push('/equipe')
         }else
@@ -43,6 +49,8 @@ export default function AjouterPays() {
     <input type="text" name="equipe" /> <br/>
    
 </div>
+
+  {/* Ici du coup ajouter et remetttre en place les formes pour que c soit dans l'ordre que je t'ai dit  */}
 
 
 <div className={styles.inputgroupA}>
