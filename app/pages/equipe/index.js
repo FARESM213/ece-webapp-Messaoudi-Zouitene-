@@ -55,14 +55,13 @@ const equipe = ({flag}) => {
         {equipes.map(equipe => (
           <div>
               <a className={styles.card} href={'/equipe/'+ equipe.id}  >
-                <Link href={'/equipe/'+ equipe.id}  > Detaile de l'equipe </Link>   
-                    Nom : {equipe.nom}
-                    Entraineur : {equipe.coach}                
-                  <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>
+                  <Link href={'/equipe/'+ equipe.id}  > Detaile de l'equipe </Link>   
+                      Nom : {equipe.nom}
+                      Entraineur : {equipe.coach}                
+                    <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>  
                 </a>
-              </div>
-            
-        ))  }
+          </div>
+        ))}
 
       </div> )
 }

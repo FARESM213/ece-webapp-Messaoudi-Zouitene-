@@ -10,15 +10,18 @@ const supabase=getServiceSupabase();
 export const getServerSideProps = async ({params}) => {
 
 const {data : equipe,erreur}= await supabase.from('equipe').select('*').eq('id',params.id).single()
+const {data : comment,erreur2}= await supabase.from('comments').select('*').eq('equipe_id',params.id)
+
 return {
     props :
     {
-      equipe
+      equipe,
+      comment,
     }
 }
 }
 
-export default function Profile({ equipe }) {
+export default function Profile({ equipe,comment }) {
   const { user, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
@@ -29,34 +32,41 @@ export default function Profile({ equipe }) {
         }
         loadData()
       })
-
-      async function Delete(id) {
+    async function Delete(id) {
               
           const { error } = await supabase.from('equipe').delete().eq('id', id)
-
           alert('Equipe supprimé')
           router.push('/equipe')
-
-      }
-
-
-      async function Update(id) {
-
-  
+    }
+    async function Delete2(id) {
+              
+        const { error } = await supabase.from('comments').delete().eq('id', id)
+        alert('Commentaire supprimé')
+        router.push('/equipe/'+equipe.id)
+    }
+    async function Update(id) {
         const equipe =document.getElementById("equipe").value;
         const compo = document.getElementById("Composition").value;
         const Entraineur = document.getElementById("Entraineur").value;
 
         const updates = 
         {
-                "nom": ""+equipe,
-                "coach": ""+Entraineur
+            "nom": ""+equipe,
+            "coach": ""+Entraineur
         }
       const { error } = await supabase.from('equipe').update({nom:""+equipe, coach: ""+Entraineur}).eq('id', id)   
       router.push('/equipe')
     }
+    async function Update2(id) {
+       alert("Ok pour le moment on fait rien"+id)
+    }
+    async function insert(id) {
 
-    
+      const commentaires =document.getElementById("comm").value;
+      const { error } = await supabase.from('comments').insert({equipe_id:id, user_id:user.id,content:commentaires})  
+      router.push('/equipe/'+equipe.id)
+    }
+
       if(user==null)
       {
         return ( 
@@ -74,164 +84,90 @@ export default function Profile({ equipe }) {
             return (
 
           <div>
-          <div className={styles.inputgroupA}>
-              <label>Nom de l'équipe</label>
-              <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
-            
-          </div>
-
-          
-          <div className={styles.inputgroupA}>
-              <label>Composition</label>
-              <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
-            
-          
-          
-          </div>
-          
-          <div className={styles.inputgroupA}>
-              <label>Entraineur</label>
-              <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
-          
-          
-          </div>
-          
-          <div className={styles.inputgroupA}>
-              <label>Dernière victoire</label>
-              <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
-            
-          
-          </div>
-          
-          <div className={styles.inputgroupA}>
-          <label>Continent</label>
-                <select name="categorie" className={styles.liste}>
-          
-                    <option value="amerique" >Amérique</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Asie">Asie</option>
-                    <option value="Afrique">Afrique</option>
-          
-                </select>
+                <div className={styles.inputgroupA}>
+                    <label>Nom de l'équipe</label>
+                    <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
                 </div>
-          
-            
-                <br/> <br/>                 
-                  <button onClick={async()=>Update(equipe.id)}> Modifier </button>
 
-                  <br/>
-                  <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
-              
+                <div className={styles.inputgroupA}>
+                    <label>Composition</label>
+                    <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
+                </div>
+                
+                <div className={styles.inputgroupA}>
+                    <label>Entraineur</label>
+                    <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
+                </div>
+                
+                <div className={styles.inputgroupA}>
+                    <label>Dernière victoire</label>
+                    <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
+                </div>
+                
+                <div className={styles.inputgroupA}>
+                <label>Continent</label>
+                        <select name="categorie" className={styles.liste}>
+                
+                            <option value="amerique" >Amérique</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Asie">Asie</option>
+                            <option value="Afrique">Afrique</option>
+                
+                        </select>
+                </div> <br/> <br/>   
+                                     
+                <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
+                <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
+
+                <div>
+                        <label> Espace Commentaires :  </label>
+                        <button onClick={async()=>insert(equipe.id)} > Add + </button>
+                        <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+                        <ul>
+                        {comment.map(com => (
+                                        <li className={styles.card}  >
+
+                                                Id : {com.id} <br/>
+                                                User_id : {com.user_id}    <br/>
+                                                equipe_id :   {com.equipe_id}  <br/>      
+                                                content : {com.content}      <br/>
+                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
+                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
+                                        </li>
+                                    ))
+                        }
+                        </ul>
+                </div>
           </div>
-  
             )
         }
         else
         {
           return (
-                
             <div>
-              Nom : {equipe.nom}
-              Entraineur : {equipe.coach}
+                    Nom : {equipe.nom}
+                    Entraineur : {equipe.coach}
+                    <div>
+                        <label> Espace Commentaires :  </label>
+                        <button onClick={async()=>insert(equipe.id)} > Add + </button>
+                        <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+                        <ul>
+                        {comment.map(com => (
+                                        <li className={styles.card}  >
+                                                Id : {com.id} <br/>
+                                                User_id : {com.user_id}    <br/>
+                                                equipe_id :   {com.equipe_id}  <br/>      
+                                                content : {com.content}      <br/>
+                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
+                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
 
-
-
-              <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
-<section class="content-item" id="comments">
-    <div class="container">   
-    	<div class="row">
-            <div class="col-sm-8">   
-                <form>
-                	<h3 class="pull-left">New Comment</h3>
-                	<button type="submit" class="btn btn-normal pull-right">Submit</button>
-                    <fieldset>
-                        <div class="row">
-                            <div class="col-sm-3 col-lg-2 hidden-xs">
-                            	<img class="img-responsive" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""/>
-                            </div>
-                            <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                <textarea class="form-control" id="message" placeholder="Your message" required=""></textarea>
-                            </div>
-                        </div>  	
-                    </fieldset>
-                </form>
-             
-                <div class="media">
-                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""/></a>
-                    <div class="media-body">
-                        <h4 class="media-heading">John Doe</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                            <li><i class="fa fa-thumbs-up"></i>13</li>
-                        </ul>
-                        <ul class="list-unstyled list-inline media-detail pull-right">
-                            <li class=""><a href="">Like</a></li>
-                            <li class=""><a href="">Reply</a></li>
+                                        </li>
+                                    ))
+                        }
                         </ul>
                     </div>
-                </div>
-                
-                <div class="media">
-                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""/></a>
-                    <div class="media-body">
-                        <h4 class="media-heading">John Doe</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                            <li><i class="fa fa-thumbs-up"></i>13</li>
-                        </ul>
-                        <ul class="list-unstyled list-inline media-detail pull-right">
-                            <li class=""><a href="">Like</a></li>
-                            <li class=""><a href="">Reply</a></li>
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <div class="media">
-                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""/></a>
-                    <div class="media-body">
-                        <h4 class="media-heading">John Doe</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                            <li><i class="fa fa-thumbs-up"></i>13</li>
-                        </ul>
-                        <ul class="list-unstyled list-inline media-detail pull-right">
-                            <li class=""><a href="">Like</a></li>
-                            <li class=""><a href="">Reply</a></li>
-                        </ul>
-                    </div>
-                </div>
-             
-                <div class="media">
-                    <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""/></a>
-                    <div class="media-body">
-                        <h4 class="media-heading">John Doe</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        <ul class="list-unstyled list-inline media-detail pull-left">
-                            <li><i class="fa fa-calendar"></i>27/02/2014</li>
-                            <li><i class="fa fa-thumbs-up"></i>13</li>
-                        </ul>
-                        <ul class="list-unstyled list-inline media-detail pull-right">
-                            <li class=""><a href="">Like</a></li>
-                            <li class=""><a href="">Reply</a></li>
-                        </ul>
-                    </div>
-                </div>
-            
-            </div>
-        </div>
-    </div>
-</section>
-
-              
             </div>
         )
-          
         }
-        
       }
-
 }

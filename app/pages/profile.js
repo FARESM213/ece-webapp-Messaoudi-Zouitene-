@@ -6,6 +6,7 @@ import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 
 export default function Contact() {
+  
   const session= useSession()
   const { user, logout, loading } = useContext(UserContext)
   const router = useRouter()
