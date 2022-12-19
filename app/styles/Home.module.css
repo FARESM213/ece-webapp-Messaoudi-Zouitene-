@@ -153,6 +153,7 @@
   background-color: #f8f8f8;
 }
 
+<<<<<<< HEAD
 .addteamform button[type="submit"] {
   width: 100%;
   background-color: #73a575;
@@ -167,3 +168,30 @@
 .addteamform button[type="submit"]:hover {
   background-color: #86c489;
 }
+=======
+.btnA{
+
+	padding: 10px;
+	font-size: 15px;
+	color: black;
+	background: #5d6160;
+	border:none;
+	border-radius: 5px;
+  
+}
+
+.liste{
+  height: 30px;
+	width: 93%;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border:1px solid grey;
+
+}
+
+
+
+
+
+>>>>>>> e4b5757d3bdd8d25607793df263e8d90758c49ec

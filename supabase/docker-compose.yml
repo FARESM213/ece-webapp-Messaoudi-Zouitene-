@@ -8,7 +8,7 @@ version: "3.8"
 
 services:
   studio:
-    container_name: supabase-studio
+    container_name: webtech-studio
     image: supabase/studio:0.22.08
     restart: unless-stopped
     ports:
@@ -26,7 +26,7 @@ services:
       SUPABASE_SERVICE_KEY: ${SERVICE_ROLE_KEY}
 
   kong:
-    container_name: supabase-kong
+    container_name: webtech-kong
     image: kong:2.8.1
     restart: unless-stopped
     ports:
@@ -44,8 +44,8 @@ services:
       - ./volumes/api:/var/lib/kong:ro
 
   auth:
-    container_name: supabase-auth
-    image: supabase/gotrue:v2.31.0
+    container_name: webtech-auth
+    image: supabase/gotrue:v2.19.4
     depends_on:
       db: # Disable this if you are using an external Postgres database
         condition: service_healthy
@@ -67,6 +67,11 @@ services:
       GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
       GOTRUE_JWT_EXP: ${JWT_EXPIRY}
       GOTRUE_JWT_SECRET: ${JWT_SECRET}
+      
+      GOTRUE_EXTERNAL_GITHUB_CLIENT_ID: ${GOTRUE_EXTERNAL_GITHUB_CLIENT_ID}
+      GOTRUE_EXTERNAL_GITHUB_SECRET: ${GOTRUE_EXTERNAL_GITHUB_SECRET}
+      GOTRUE_EXTERNAL_GITHUB_ENABLED: ${GOTRUE_EXTERNAL_GITHUB_ENABLED}
+      GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI: ${GOTRUE_EXTERNAL_GITHUB_REDIRECT_URI}
 
       GOTRUE_EXTERNAL_EMAIL_ENABLED: ${ENABLE_EMAIL_SIGNUP}
       GOTRUE_MAILER_AUTOCONFIRM: ${ENABLE_EMAIL_AUTOCONFIRM}
@@ -85,10 +90,9 @@ services:
 
       GOTRUE_EXTERNAL_PHONE_ENABLED: ${ENABLE_PHONE_SIGNUP}
       GOTRUE_SMS_AUTOCONFIRM: ${ENABLE_PHONE_AUTOCONFIRM}
-      MFA_ENABLED: ${MFA_ENABLED}
 
   rest:
-    container_name: supabase-rest
+    container_name: webtech-rest
     image: postgrest/postgrest:v9.0.1.20220717
     depends_on:
       db: # Disable this if you are using an external Postgres database
@@ -102,7 +106,7 @@ services:
       PGRST_DB_USE_LEGACY_GUCS: "false"
 
   realtime:
-    container_name: supabase-realtime
+    container_name: webtech-realtime
     image: supabase/realtime:v0.25.1
     depends_on:
       db: # Disable this if you are using an external Postgres database
@@ -127,7 +131,7 @@ services:
       && ./prod/rel/realtime/bin/realtime start"
 
   storage:
-    container_name: supabase-storage
+    container_name: webtech-storage
     image: supabase/storage-api:v0.21.4
     depends_on:
       db: # Disable this if you are using an external Postgres database
@@ -152,7 +156,7 @@ services:
       - ./volumes/storage:/var/lib/storage
 
   meta:
-    container_name: supabase-meta
+    container_name: webtech-meta
     image: supabase/postgres-meta:v0.50.2
     depends_on:
       db: # Disable this if you are using an external Postgres database
@@ -168,7 +172,7 @@ services:
 
   # Comment out everything below this point if you are using an external Postgres database
   db:
-    container_name: supabase-db
+    container_name: webtech-db
     image: supabase/postgres:14.1.0.82
     healthcheck:
       test: pg_isready -U postgres -h localhost
