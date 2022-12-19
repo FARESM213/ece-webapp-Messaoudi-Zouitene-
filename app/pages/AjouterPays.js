@@ -40,7 +40,6 @@ export default function Profile({ equipe }) {
                   Continent:continen,
                   Liste_joueurs:players
                   
-              
               },{ returning: "minimal" })
 
               if(error) 
