@@ -125,59 +125,45 @@
 }
 
 
-.form{
 
-	width: 30%;
-	margin:0px 20px 0px 50px;
-	padding: 20px;
-	border: 1px solid #57CBAB;
-	background: white;
-	border-radius: 0px 0px 10px 10px;
-
+.addteamform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-
-.inputgroupA{
-	margin: 0px 10px 10px 0px;
-}
- 
-.inputgroupA label{
-	display: block;
-	text-align: center;
-	margin: 3px;
-
+.addteamform label {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-.inputgroupA input{
-	height: 30px;
-	width: 93%;
-	padding: 50px 100px;
-	font-size: 16px;
-	border-radius: 5px;
-	border:2px solid rgb(73, 65, 65);
-
+.addteamform input[type="text"],
+.addteamform input[type="file"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
 }
 
-.btnA{
-
-	padding: 10px;
-	font-size: 15px;
-	color: white;
-	background: #5d6160;
-	border:none;
-	border-radius: 5px;
-
+.addteamform button[type="submit"] {
+  width: 100%;
+  background-color: #73a575;
+  color: white;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.liste{
-  height: 30px;
-	width: 93%;
-	padding: 5px 10px;
-	font-size: 16px;
-	border-radius: 5px;
-	border:1px solid grey;}
-
-
-
-
-
+.addteamform button[type="submit"]:hover {
+  background-color: #86c489;
+}
