@@ -10,6 +10,7 @@ export default function AjouterPays() {
     const router = useRouter()
     const { user, logout, loading } = useContext(UserContext)
     const options = ['Amérique', 'Asie', 'Afrique', 'Europe'];
+    const compo = ['4-4-2', '4-3-3', '3-5-2', '4-2-3-1'];
     
     async function handleSubmit(event) {
         
@@ -50,7 +51,11 @@ export default function AjouterPays() {
             <label htmlFor="anglais">Listes des joueurs :</label>
             <input type="text" id="joueurs" name="joueurs" required />
             <label htmlFor="anglais">Composition équipe :</label>
-            <input type="text" id="Composition" name="Composition" required />
+            <select id="Continent" name="Continent">
+            {compo.map(compo => (
+            <option value={compo} key={compo}>{compo}</option>
+             ))}
+            </select>
             
             <label htmlFor="Continent">Continent :</label>
             <select id="Continent" name="Continent">
