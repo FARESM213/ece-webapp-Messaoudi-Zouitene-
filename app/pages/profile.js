@@ -96,7 +96,6 @@ export default function Contact() {
           >
             Logout
           </button>
-          
 
     <div className="form-widget">
       <div>

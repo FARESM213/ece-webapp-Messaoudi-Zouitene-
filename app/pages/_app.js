@@ -10,10 +10,10 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}
-      initialSession={pageProps.initialSession}
+      initialSession={pageProps.initialSession} 
     >
       <UserContextProvider>
-        <Layout>
+       <Layout>
          <Component {...pageProps} />       
         </Layout>
       </UserContextProvider>

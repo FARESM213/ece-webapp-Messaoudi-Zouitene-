@@ -20,7 +20,7 @@ export default function Home() {
          </a>
         </p>  
 
-        <div className={styles.grid}>
+      <div className={styles.grid}>
         <a href="/America"className={styles.card}>
             <h2>America &rarr;</h2>
             <img src="amerique.png" width="400" length="400" alt="amerique image"/>
@@ -39,11 +39,11 @@ export default function Home() {
             <img src="asiii2.png" width="400" length="400" alt="asia image"/>
           </a>
 
-         
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Europe &rarr;</h2>
             <img src="europe12.png" width="400" length="400" alt="europe image"/>
           </a>
+
         </div>
       </main>
       
