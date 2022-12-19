@@ -4,9 +4,10 @@ import Head from 'next/head'
 import UserContext from '../components/UserContext'
 import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
+import styles from '../styles/Home.module.css'
+
 
 export default function Contact2() {
-
 
   return (
     <>
@@ -16,37 +17,40 @@ export default function Contact2() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       { 
-        <>
-          <button
-            className="rounded px-3 py-2 text-white bg-slate-500 hover:bg-blue-500"
-          >
-            Logout
-          </button>
-          
-
-    <div className="form-widget">
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" disabled />
+        <div className={styles.formcontainer}>
+        <form className={styles.userform}>
+          <h2>Information Utilisateur</h2>
+          <label htmlFor="username1">Info 1 :</label>
+          <input type="text" id="username1" name="username" required />
+          <label htmlFor="Info2">Info 2 :</label>
+          <input type="text" id="Info2" name="Info2" required />
+          <label htmlFor="Info3">Info 3 :</label>
+          <input type="text" id="Info3" name="Info3" required />
+          <label htmlFor="Info4">Info 4 :</label>
+          <input type="text" id="Info4" name="Info4" required />
+          <button type="submit">Log out</button>
+          <button type="submit">Update</button>
+        </form>
+        <form className={styles.userform}>
+        <h2>Liste des équipes créé</h2>
+        <label htmlFor="username1">Nom d'utilisateur :</label>
+          <input type="text" id="username1" name="username" required />
+          <label htmlFor="password1">Mot de passe :</label>
+          <input type="password" id="password1" name="password" required />
+          <button type="submit">Se connecter</button>
+        </form>
+        <form className={styles.userform}>
+        <h2>Liste des commentaire ajoutées</h2>
+          <label htmlFor="username1">Nom d'utilisateur :</label>
+          <input type="text" id="username1" name="username" required />
+          <label htmlFor="password1">Mot de passe :</label>
+          <input type="password" id="password1" name="password" required />
+          <button type="submit">Se connecter</button>
+        </form>
       </div>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-        />
-      </div>
-
-      <div>
-        <button
-          className="button primary block"
-        >
-          {'Update'}
-        </button>
-      </div>
-    </div>
-        </>
       }
     </>
   )
 }
+
+

@@ -15,7 +15,7 @@ export default function Header() {
         <div class="header-right">
         <Link class="active" href="/" >Home </Link>
         <Link href="/contacts">Contact</Link>
-        <Link href="/about">About Us</Link>
+        <Link href="/profile2">About Us</Link>
         </div>
         </div> 
     </header>

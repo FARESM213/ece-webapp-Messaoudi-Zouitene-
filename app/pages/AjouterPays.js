@@ -1,6 +1,5 @@
 import styles from '../styles/Home.module.css'
 import supabase from '../supabase'
-
 import { useRouter } from 'next/router'
 import UserContext from '../components/UserContext'
 import { useContext } from 'react'
@@ -10,7 +9,7 @@ export default function AjouterPays() {
 
     const router = useRouter()
     const { user, logout, loading } = useContext(UserContext)
-
+    const options = ['Amérique', 'Asie', 'Afrique', 'Europe'];
     
     async function handleSubmit(event) {
         
@@ -52,7 +51,15 @@ export default function AjouterPays() {
             <input type="text" id="joueurs" name="joueurs" required />
             <label htmlFor="anglais">Composition équipe :</label>
             <input type="text" id="Composition" name="Composition" required />
-            <label>Continent</label>
+            
+            <label htmlFor="Continent">Continent :</label>
+            <select id="Continent" name="Continent">
+            {options.map(option => (
+            <option value={option} key={option}>{option}</option>
+             ))}
+            </select>
+
+            <button type="submit">Ajouter l'équipe</button>
         </form>
   )
   
