@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   return (
 
-    <>
+    <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
 
     <div className={styles.container}>
       
@@ -54,7 +54,7 @@ export default function Home() {
           
     </div>
 
-    </>
+    </div>
   )
 }
 

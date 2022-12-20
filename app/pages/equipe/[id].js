@@ -26,6 +26,7 @@ export default function Profile({ equipe,comment }) {
   const { user, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
+  const compo = ['3-1-4-2', '3-4-1-2', '3-4-2-1','3-4-3','3-5-1-1','3-5-2','4-1-2-1-2','4-1-3-2' ,'4-1-4-1','4-2-2-2','4-2-3-1','4-2-4','4-3-1-2','4-3-2-1','4-3-3','4-4-1-1','4-4-2','4-5-1','5-2-1-2','5-2-2-1','5-2-3','5-3-2','5-4-1'];
 
     useEffect(() => {
         async function loadData() {
@@ -59,18 +60,31 @@ export default function Profile({ equipe,comment }) {
         router.push('/equipe/'+equipe.id)
     }
     async function Update(id) {
+
         const equipe =document.getElementById("equipe").value;
-        const compo = document.getElementById("Composition").value;
         const Entraineur = document.getElementById("Entraineur").value;
+        const fla =  document.getElementById("anglais").value;
+        const players =  document.getElementById("joueurs").value;        
+        
+        
+        const continen = ""+document.querySelector('#continent').value;
+        const compos = ""+document.querySelector('#Composition').value;
+
 
         const updates = 
         {
             "nom": ""+equipe,
-            "coach": ""+Entraineur
+            "coach": ""+Entraineur,
+            "Composition": ""+compos,
+            "Continent" :""+continen,
+            "flag":""+fla,
+            "Liste_joueurs":""+players
         }
-      const { error } = await supabase.from('equipe').update({nom:""+equipe, coach: ""+Entraineur}).eq('id', id)   
+
+      const { error } = await supabase.from('equipe').update(updates).eq('id', id)   
       router.push('/equipe')
     }
+
     async function Update2(id) {
        alert("Ok pour le moment on fait rien"+id)
     }
@@ -85,7 +99,7 @@ export default function Profile({ equipe,comment }) {
       {
         
         return (
-          <div>
+          <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
                   Nom : {equipe.nom}
                   Entraineur : {equipe.coach}
                   <div className={styles.userform2} >
@@ -124,42 +138,45 @@ export default function Profile({ equipe,comment }) {
 
             return (
 
-          <div>
-                <div className={styles.inputgroupA}>
+          <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
+            <div className={styles.teamdata} >
                     <label>Nom de l'équipe</label>
                     <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
-
-                <div className={styles.inputgroupA}>
+                    <label>Coach</label>
+                    <input type="text" id="Entraineur" name="Entraineur" defaultValue={equipe.coach|| ''}/> <br/>
+                    <label>Nom en anglais</label>
+                    <input type="text" id="anglais" name="anglais" defaultValue={equipe.flag|| ''}/> <br/>
+                    <label>Liste des joueurs</label>
+                    <input type="text" id="joueurs" name="joueurs" defaultValue={equipe.Liste_joueurs|| ''}/> <br/>
                     <label>Composition</label>
-                    <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
-                    <label>Entraineur</label>
-                    <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
-                    <label>Dernière victoire</label>
-                    <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
+                  
+                    <select  type="text" id="Composition" name="Composition" defaultValue={equipe.Composition|| ''}>
+                    {compo.map(compo => (
+                    <option type="text" value={compo} key={compo}>{compo}</option>
+                    ))}
+                    </select>             
+              
                 <label>Continent</label>
-                        <select name="categorie" className={styles.liste}>
-                
+                        <select  id="continent" name="continent" className={styles.li} defaultValue={equipe.Continent|| ''}>
                             <option value="amerique" >Amérique</option>
                             <option value="Europe">Europe</option>
                             <option value="Asie">Asie</option>
                             <option value="Afrique">Afrique</option>
-                
                         </select>
-                </div> <br/> <br/>   
-                                     
-                <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
-                <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
-
+                      
+                  <tr>      
+        
+                    <th>
+                        <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>                      
+                    </th>     
+                    <th>
+                       <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
+                    </th>
+                          
+                  </tr>
+                       
+              </div>   
+                                                   
                 <div className={styles.userform2} >
                     <h2> Espace Commentaires :  </h2>
                     <button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>

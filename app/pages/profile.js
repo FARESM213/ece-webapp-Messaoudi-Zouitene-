@@ -217,10 +217,14 @@ async function Update(id) {
         :
         <> 
 
+        <div className={styles.formcontainer2}> 
+        
+        
+        <div class="grid grid-rows-3 grid-flow-col gap-4">
+          <div class="row-span-3 ...">
 
-        <div className={styles.formcontainer}>
-          
-            <div className={styles.userform}>
+
+          <div className={styles.userform2}>
                 <h2>Information Utilisateur</h2>
                 <div className="form-widget">
 
@@ -249,36 +253,61 @@ async function Update(id) {
                 <button className="rounded px-5 py-3 text-white bg-green-500 hover:bg-green-300" onClick={async() => updateProfile({ username, website, avatar_url })} disabled={loading} > {loading ? 'Loading ...' : 'Update'}</button>        
             </div>
 
-            <div className={styles.scroll}>
 
-              {user_comments ? user_comments.map(com => (
-                                                      <div className={styles.card2}  key={com.id}>
-                                                        <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
-                                                              Id : {com.id} <br/>
-                                                              User_id : {com.user_id}    <br/>
-                                                              equipe_id :   {com.equipe_id}  <br/>      
-                                                              content : {com.content}      <br/>
-                                                              { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
-                                                              { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
-                                                      </div>
-                                                  )): <></>
-              }
+          </div>
 
-            </div>
-                        
-            <div className={styles.scroll}>
-                    {user_teams ? user_teams.map(equipe => (
-                              <div className={styles.card2} key={equipe.id}>
-                                      <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
-                                      <h2>Detail de l'equipe</h2>  
-                                          <p>Nom : {equipe.nom}</p>
-                                          <p>Entraineur : {equipe.coach}   </p>     
-                                          { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete(equipe.id)} > Delete </button>):<></>}
-                                              { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update(equipe.id)} >Edit</button>):<></>}        
-                              </div>
-                    )): <></>}
+          {/* <div className={styles.decale}> */}
+            
+                <div class="col-span-2 ..." >
+                <div className={styles.userform3} >
+                          <h2> Espace Commentaires :  </h2>
+                        <div className={styles.scroll2}>
 
-            </div>
+                                {user_comments ? user_comments.map(com => (
+                                                                        <div className={styles.card2}  key={com.id}>
+                                                                          <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
+                                                                                Id : {com.id} <br/>
+                                                                                User_id : {com.user_id}    <br/>
+                                                                                equipe_id :   {com.equipe_id}  <br/>      
+                                                                                content : {com.content}      <br/>
+                                                                                { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
+                                                                                { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
+                                                                        </div>
+                                                                    )): <></>
+                                }
+
+                                </div>
+                    </div>
+
+                </div>
+                <div class="row-span-2 col-span-2 ...">
+                      <div className={styles.userform3} >
+
+                            <h2> Espace Equipe :  </h2>
+
+                            {
+                                    user?<button className={styles.yes2} onClick={async()=>router.push("/AjouterPays")} > Add + </button>: <button className={styles.yes2} onClick={async()=>router.push("/Login")} > Connect </button>
+                            }
+                                        
+                            <div className={styles.scroll2}>
+                                    {user_teams ? user_teams.map(equipe => (
+                                              <div className={styles.card2} key={equipe.id}>
+                                                      <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
+                                                      <h2>Detail de l'equipe</h2>  
+                                                          <p>Nom : {equipe.nom}</p>
+                                                          <p>Entraineur : {equipe.coach}   </p>     
+                                                          { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete(equipe.id)} > Delete </button>):<></>}
+                                                              { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update(equipe.id)} >Edit</button>):<></>}        
+                                              </div>
+                                    )): <></>}
+
+                            </div>
+                        </div>
+                </div>
+          {/* </div> */}
+        </div>
+          
+
 
         </div>
 

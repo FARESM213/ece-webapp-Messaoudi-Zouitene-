@@ -100,7 +100,7 @@ const equipe = ({flag}) => {
   }
 
   return ( 
-      
+    <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
       <div className={styles.grid}>
 
         {equipes.map(equipe => (
@@ -113,7 +113,8 @@ const equipe = ({flag}) => {
           </div>
         ))}
 
-      </div> )
+      </div> 
+      </div>)
 }
 
 export default equipe;

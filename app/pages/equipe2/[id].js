@@ -48,6 +48,7 @@ export default function Profile({ equipe,comment }) {
   let { user, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
+  const compo = ['3-1-4-2', '3-4-1-2', '3-4-2-1','3-4-3','3-5-1-1','3-5-2','4-1-2-1-2','4-1-3-2' ,'4-1-4-1','4-2-2-2','4-2-3-1','4-2-4','4-3-1-2','4-3-2-1','4-3-3','4-4-1-1','4-4-2','4-5-1','5-2-1-2','5-2-2-1','5-2-3','5-3-2','5-4-1'];
 
     user={id:3}
 
@@ -84,15 +85,24 @@ export default function Profile({ equipe,comment }) {
         router.push('/equipe/'+equipe.id)
     }
     async function Update(id) {
+
         const equipe =document.getElementById("equipe").value;
-        const compo = document.getElementById("Composition").value;
+        const compo = ""+document.querySelector('#Composition').value;
         const Entraineur = document.getElementById("Entraineur").value;
+        const fla =  document.getElementById("anglais").value;
+        const continen = ""+document.querySelector('#continent').value;
+        const players =  document.getElementById("joueurs").value;
 
         const updates = 
         {
             "nom": ""+equipe,
-            "coach": ""+Entraineur
+            "coach": ""+Entraineur,
+            "Composition": ""+compo,
+            "Continent" :""+continen,
+            "flag":""+fla,
+            "Liste_joueurs":""+players
         }
+
       const { error } = await supabase.from('equipe').update({nom:""+equipe, coach: ""+Entraineur}).eq('id', id)   
       router.push('/equipe')
     }
@@ -109,80 +119,40 @@ export default function Profile({ equipe,comment }) {
       {
             return (
 
-          <div>
-                
+              <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
                 <form className={styles.teamdata} >
                     <label>Nom de l'équipe</label>
-                   
                     <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
-                    
-                    <label>Coatch</label>
-                   
-                    <input type="text" id="Coatch" name="Coatch" defaultValue={equipe.nom|| ''}/> <br/>
-                    
-                    <label>Nom en anglai</label>
-                    <input type="text" id="anglais" name="anglais" defaultValue={equipe.nom|| ''}/> <br/>
-                    
+                    <label>Coach</label>
+                    <input type="text" id="Entraineur" name="Entraineur" defaultValue={equipe.coach|| ''}/> <br/>
+                    <label>Nom en anglais</label>
+                    <input type="text" id="anglais" name="anglais" defaultValue={equipe.flag|| ''}/> <br/>
                     <label>Liste des joueurs</label>
-                   
-                    <input type="text" id="joueurs" name="joueurs" defaultValue={equipe.nom|| ''}/> <br/>
-               
-
+                    <input type="text" id="joueurs" name="joueurs" defaultValue={equipe.Liste_joueurs|| ''}/> <br/>
                     <label>Composition</label>
                   
-                    <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
-             
-                
-                
-                    <label>Dernière victoire</label>
-                    <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
-             
-                
-             
+                    <select  type="text" id="Composition" name="Composition" defaultValue={equipe.Composition|| ''}>
+                    {compo.map(compo => (
+                    <option type="text" value={compo} key={compo}>{compo}</option>
+                    ))}
+                    </select>             
+              
                 <label>Continent</label>
-                        <select name="categorie" className={styles.li}>
-                
+                        <select  id="continent" name="continent" className={styles.li} defaultValue={equipe.Continent|| ''}>
                             <option value="amerique" >Amérique</option>
                             <option value="Europe">Europe</option>
                             <option value="Asie">Asie</option>
                             <option value="Afrique">Afrique</option>
-                
                         </select>
                       
-               <td>
-              <div>              
-              <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
-              <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>
-              </div>
-              </td>
+                  <div>              
+                        <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
+                        <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>
+                  </div>
               </form>       
 
                 <br></br> <br></br>
-                <form className={styles.teamdata} >
-                <div className={styles.userform2} >
-                    <h2> Espace Commentaires :  </h2>
-                    <button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>
 
-                    <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-                    <div className={styles.scroll2}>
-                            {comment.map(com => (
-                                                    <div className={styles.card2} key={com.id} >
- 
-                                                                  Id : {com.id} <br/>
-                                                                  User_id : {com.user_id}    <br/>
-                                                                  equipe_id :   {com.equipe_id}  <br/>      
-                                                                  content : {com.content}      <br/>
-                                                                  { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
-                                                                  { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
-                                                          </div>
-                                                      ))
-                            }
-                    </div>
-
-                                 
-          
-                </div>
-                </form>  
           </div>
         
             )

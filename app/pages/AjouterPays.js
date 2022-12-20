@@ -61,7 +61,7 @@ export default function Profile({ equipe }) {
     }
             return (
 
-          <div>
+          <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
         
         <form className={styles.addteamform} onSubmit={handleSubmit} >
 
