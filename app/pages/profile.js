@@ -19,21 +19,12 @@ export const getStaticProps =async ()=>{
 }
 
 function getBase64Image(img) {
-  // Create an empty canvas element
   var canvas = document.createElement("canvas");
   canvas.width = img.width;
   canvas.height = img.height;
-
-  // Copy the image contents to the canvas
   var ctx = canvas.getContext("2d");
   ctx.drawImage(img, 0, 0);
-
-  // Get the data-URL formatted image
-  // Firefox supports PNG and JPEG. You could check img.src to
-  // guess the original format, but be aware the using "image/jpg"
-  // will re-encode the image.
   var dataURL = canvas.toDataURL("image/png");
-
   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
@@ -170,6 +161,9 @@ export default function Contact({flag}) {
       if (error) throw error
       
       alert('Profile updated!')
+
+      setUsername(username)
+      getProfile()
     } catch (error) {
       console.log(error)
     } finally {
@@ -181,12 +175,34 @@ export default function Contact({flag}) {
               
     const { error } = await supabase.from('comments').delete().eq('id', id)
     alert('Commentaire supprimé')
+    getComments(user.id)
+
     router.push('/profile')
 }
+
+
+
 
 async function Update2(id) {
   alert("Ok pour le moment on fait rien"+id)
 }
+
+
+async function Delete(id) {
+              
+  const { error } = await supabase.from('equipe').delete().eq('id', id)
+  alert('Equipe supprimé')
+
+  getTeams(user.id)
+  router.push('/profile')
+
+}
+
+async function Update(id) {
+  alert("Ok pour le moment on fait rien"+id)
+}
+
+
   return (
     <>
       <Head>
@@ -256,7 +272,9 @@ async function Update2(id) {
                                       <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
                                       <h2>Detail de l'equipe</h2>  
                                           <p>Nom : {equipe.nom}</p>
-                                          <p>Entraineur : {equipe.coach}   </p>             
+                                          <p>Entraineur : {equipe.coach}   </p>     
+                                          { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete(equipe.id)} > Delete </button>):<></>}
+                                              { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update(equipe.id)} >Edit</button>):<></>}        
                               </div>
                     )): <></>}
 
