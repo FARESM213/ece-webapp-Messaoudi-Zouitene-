@@ -215,13 +215,11 @@ async function Update(id) {
 
         <p>Redirecting...</p>
         :
-        <> 
-
-        <div className={styles.formcontainer2}> 
+        <div> 
         
         
-        <div class="grid grid-rows-3 grid-flow-col gap-4">
-          <div class="row-span-3 ...">
+        <div class="grid grid-rows-2 grid-flow-col gap-4">
+          <div class="row-span-3">
 
 
           <div className={styles.userform2}>
@@ -256,9 +254,8 @@ async function Update(id) {
 
           </div>
 
-          {/* <div className={styles.decale}> */}
             
-                <div class="col-span-2 ..." >
+                <div class="col-span-2" className={styles.decale} >
                 <div className={styles.userform3} >
                           <h2> Espace Commentaires :  </h2>
                         <div className={styles.scroll2}>
@@ -280,7 +277,7 @@ async function Update(id) {
                     </div>
 
                 </div>
-                <div class="row-span-2 col-span-2 ...">
+                <div class="row-span-2 col-span-2" className={styles.decale2}>
                       <div className={styles.userform3} >
 
                             <h2> Espace Equipe :  </h2>
@@ -304,15 +301,8 @@ async function Update(id) {
                             </div>
                         </div>
                 </div>
-          {/* </div> */}
         </div>
-          
-
-
         </div>
-
-        </>
-
 
       }
     </>

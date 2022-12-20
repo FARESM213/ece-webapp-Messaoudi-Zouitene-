@@ -291,13 +291,13 @@
 
 
 .card2 {
-  margin: 1rem;
+  margin: 0.9rem;
   padding: 1.2rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
-  border-radius: 10px;
+  border-radius: 20px;
   transition: color 0.15s ease, border-color 0.15s ease;
   height: fit-content;
 }
@@ -324,8 +324,6 @@
   font-size: 1rem;
   line-height: 1.5;
 }
-
-
 
 .teamdata {
   display: flex;
@@ -488,14 +486,12 @@
   background-color: #f8f8f8;
 }
 
-
-
 .userform3 {
-  width: 60%;
+  width: 70%;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 20px 200px; /* ajout d'un marge de 10px à gauche et à droite */
+  margin: -10px 200px; /* ajout d'un marge de 10px à gauche et à droite */
   align-items: center;
   height: fit-content;
 }
@@ -510,24 +506,20 @@
   margin-bottom: 10px;
 }
 
-.userform3 input[type="text"],
-.userform3 input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-}
-
 .decale
-{  
-  
-  margin-top: 1%;
+{ 
+  margin-top: 8%;
+  margin-bottom: 3%;
   margin-left: 5%;
-  height: 50%;
-
 }
+
+.decale2
+{ 
+  margin-top: 1%;
+  margin-bottom: 3%;
+  margin-left: 5%;
+}
+
 
 
 .yes {
