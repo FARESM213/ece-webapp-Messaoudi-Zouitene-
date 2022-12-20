@@ -4,6 +4,7 @@ import UserContext from '../../components/UserContext'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
+import MD5 from 'crypto-js/md5';
 
 const supabase=getServiceSupabase();
 
@@ -32,6 +33,19 @@ export default function Profile({ equipe,comment }) {
         }
         loadData()
       })
+
+
+      async function getMD(id) {
+        const data= await supabase.from('profiles').select("email").eq('id', id).single()
+        if(data)
+        {        
+          alert(MD5(data.email))
+
+          return MD5(""+data.email)
+        }
+
+    }
+
     async function Delete(id) {
               
           const { error } = await supabase.from('equipe').delete().eq('id', id)
@@ -63,24 +77,51 @@ export default function Profile({ equipe,comment }) {
     async function insert(id) {
 
       const commentaires =document.getElementById("comm").value;
-      const { error } = await supabase.from('comments').insert({equipe_id:id, user_id:user.id,content:commentaires})  
+      const { error } = await supabase.from('comments').insert({equipe_id:id, user_id:user.id,content:commentaires,user_email:user.email})  
       router.push('/equipe/'+equipe.id)
     }
 
-      if(user==null)
+      if((user==null)||(user.id!=equipe.user_id))
       {
-        return ( 
+        
+        return (
           <div>
-            Nom : {equipe.nom}
-            Entraineur : {equipe.coach}
+                  Nom : {equipe.nom}
+                  Entraineur : {equipe.coach}
+                  <div className={styles.userform2} >
+                    <h2> Espace Commentaires :  </h2>
+                  {
+                    user?<button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>: <button className={styles.yes} onClick={async()=>router.push("/Login")} > Connect </button>
+                  }
+                  <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+
+                   <div className={styles.scroll2}> 
+                      <ul>
+                      {comment.map(com => (
+                                                    <div className={styles.card2} key={com.id} >
+                                                      <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
+                                                            Id : {com.id} <br/>
+                                                            User_id : {com.user_id}    <br/>
+                                                            equipe_id :   {com.equipe_id}  <br/>      
+                                                            content : {com.content}      <br/>
+                                                            {
+                                                              user?( com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>):<></>
+                                                            }
+                                                            {
+                                                              user?(  com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>):<></>
+                                                            }
+                                                    </div>
+                                                ))
+                      }
+                      </ul>
+                  </div>
+                  </div>
           </div>
       )
       }
       else
       {
 
-        if(user.id==equipe.user_id)
-        {
             return (
 
           <div>
@@ -119,56 +160,28 @@ export default function Profile({ equipe,comment }) {
                 <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
                 <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
 
-                <label> Espace Commentaires :  </label>
-                <button onClick={async()=>insert(equipe.id)} > Add + </button>
-                <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-                <div className={styles.scroll}>
-                        <ul>
-                        {comment.map(com => (
-                                        <li className={styles.card}  >
+                <div className={styles.userform2} >
+                    <h2> Espace Commentaires :  </h2>
+                    <button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>
 
-                                                Id : {com.id} <br/>
-                                                User_id : {com.user_id}    <br/>
-                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                content : {com.content}      <br/>
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
-                                        </li>
-                                    ))
-                        }
-                        </ul>
+                    <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+                    <div className={styles.scroll2}>
+                            {comment.map(com => (
+                                                    <div className={styles.card2} key={com.id} >
+                                                    <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="80" length="80" />  
+                                                                  Id : {com.id} <br/>
+                                                                  User_id : {com.user_id}    <br/>
+                                                                  equipe_id :   {com.equipe_id}  <br/>      
+                                                                  content : {com.content}      <br/>
+                                                                  { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
+                                                                  { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
+                                                          </div>
+                                                      ))
+                            }
+                    </div>
                 </div>
+
           </div>
             )
-        }
-        else
-        {
-          return (
-            <div>
-                    Nom : {equipe.nom}
-                    Entraineur : {equipe.coach}
-                    <label> Espace Commentaires :  </label>
-                    <button onClick={async()=>insert(equipe.id)} > Add + </button>
-                    <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-
-                     <div className={styles.scroll}> 
-                        <ul>
-                        {comment.map(com => (
-                                        <li className={styles.card}  >
-                                                Id : {com.id} <br/>
-                                                User_id : {com.user_id}    <br/>
-                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                content : {com.content}      <br/>
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
-
-                                        </li>
-                                    ))
-                        }
-                        </ul>
-                    </div>
-            </div>
-        )
-        }
       }
 }

@@ -38,8 +38,6 @@ const equipe = ({flag}) => {
   {  
       var flag2=-1
       for (let key in flag) {
-          console.log("key", key)
-          console.log("value", flag[key])
           if(flag[key]==name)
           {
                 flag2=key
@@ -53,11 +51,10 @@ const equipe = ({flag}) => {
       <div className={styles.grid}>
 
         {equipes.map(equipe => (
-          <div>
-              <a className={styles.card} href={'/equipe/'+ equipe.id}  >
-                  <Link href={'/equipe/'+ equipe.id}  > Detaile de l'equipe </Link>   
-                      Nom : {equipe.nom}
-                      Entraineur : {equipe.coach}                
+          <div className={styles.card}  key={equipe.id}>
+              <a href={'/equipe/'+ equipe.id}  >
+                      <h2>{equipe.nom}</h2>
+                      <p>{equipe.coach}  </p>              
                     <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>  
                 </a>
           </div>

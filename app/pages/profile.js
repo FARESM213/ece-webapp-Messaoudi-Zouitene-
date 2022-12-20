@@ -6,7 +6,7 @@ import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-import Link from 'next/link'
+import MD5 from 'crypto-js/md5';
 
 export const getStaticProps =async ()=>{
   const res= await fetch("https://flagcdn.com/fr/codes.json")
@@ -17,6 +17,26 @@ export const getStaticProps =async ()=>{
 
   }
 }
+
+function getBase64Image(img) {
+  // Create an empty canvas element
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  // Copy the image contents to the canvas
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  // Get the data-URL formatted image
+  // Firefox supports PNG and JPEG. You could check img.src to
+  // guess the original format, but be aware the using "image/jpg"
+  // will re-encode the image.
+  var dataURL = canvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
 
 export default function Contact({flag}) {
 
@@ -75,12 +95,41 @@ export default function Contact({flag}) {
 
   }
 
+  async function sameImages(mail) {
+    const session = useSession()
+    const a = new Image()
+    a.crossOrigin="anonymous"
+    const b = new Image()
+    b.crossOrigin="anonymous"
+    a.src = 'https://www.gravatar.com/avatar/' + MD5(mail)
+    b.src = 'https://www.gravatar.com/avatar/'
+  
+    // might need to wait until a and b have actually loaded, ignoring this for now
+    const a_base64 = getBase64Image(a)
+    const b_base64 = getBase64Image(b)
+    var c = "" 
+  
+  
+    if (a_base64 === b_base64) 
+    {
+      c='https://www.gravatar.com/avatar/78fd7fd27f60bc9dd10d42c293a2f71a '
+    }
+    else 
+    {
+        c ='https://www.gravatar.com/avatar/' + MD5(mail)
+    }
+
+    console.log(c)
+    
+    return c.toString 
+  }
+
+  
+
   function Loadflag(name,flag)
   {  
       var flag2=-1
       for (let key in flag) {
-          console.log("key", key)
-          console.log("value", flag[key])
           if(flag[key]==name)
           {
                 flag2=key
@@ -112,10 +161,11 @@ export default function Contact({flag}) {
         username,
         website,
         avatar_url,
+        email: user.email,
         updated_at: new Date().toISOString(),
       }
 
-      let { error } = await supabase.from('profiles').update(updates)    
+      let { error } = await supabase.from('profiles').upsert(updates)    
       
       if (error) throw error
       
@@ -127,6 +177,16 @@ export default function Contact({flag}) {
     }
   }
 
+  async function Delete2(id) {
+              
+    const { error } = await supabase.from('comments').delete().eq('id', id)
+    alert('Commentaire supprimé')
+    router.push('/profile')
+}
+
+async function Update2(id) {
+  alert("Ok pour le moment on fait rien"+id)
+}
   return (
     <>
       <Head>
@@ -139,11 +199,21 @@ export default function Contact({flag}) {
 
         <p>Redirecting...</p>
         :
+        <> 
+
+
         <div className={styles.formcontainer}>
           
             <div className={styles.userform}>
                 <h2>Information Utilisateur</h2>
                 <div className="form-widget">
+
+                <div>
+                    <label htmlFor="website">Profil Image</label>
+                    <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(user.email)} width="100" length="100" />  
+                </div>
+                <br/>
+
                   <div>
                     <label htmlFor="email">Email</label>
                     <input id="email" type="text" value={user.email} disabled />
@@ -158,40 +228,43 @@ export default function Contact({flag}) {
                     <label htmlFor="website">Website</label>
                     <input id="website" type="text" value={website || ''} onChange={(e) => setWebsite(e.target.value)}/>
                   </div>
-
-                  <div>
-                    <label htmlFor="website">Profil Image</label>
-                    <img/>
-                  </div>
                 </div>
                 <button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 "  onClick={onClickLogout} > Logout </button>
                 <button className="rounded px-5 py-3 text-white bg-green-500 hover:bg-green-300" onClick={async() => updateProfile({ username, website, avatar_url })} disabled={loading} > {loading ? 'Loading ...' : 'Update'}</button>        
             </div>
+
+            <div className={styles.scroll}>
+
+              {user_comments ? user_comments.map(com => (
+                                                      <div className={styles.card2}  key={com.id}>
+                                                        <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
+                                                              Id : {com.id} <br/>
+                                                              User_id : {com.user_id}    <br/>
+                                                              equipe_id :   {com.equipe_id}  <br/>      
+                                                              content : {com.content}      <br/>
+                                                              { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
+                                                              { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
+                                                      </div>
+                                                  )): <></>
+              }
+
+            </div>
                         
-            {user_comments ? user_comments.map(com => (
-                                        <div className={styles.card}  >
-                                                Id : {com.id} <br/>
-                                                User_id : {com.user_id}    <br/>
-                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                content : {com.content}      <br/>
-                                        </div>
-                                    )): <></>
-            }
+            <div className={styles.scroll}>
+                    {user_teams ? user_teams.map(equipe => (
+                              <div className={styles.card2} key={equipe.id}>
+                                      <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
+                                      <h2>Detail de l'equipe</h2>  
+                                          <p>Nom : {equipe.nom}</p>
+                                          <p>Entraineur : {equipe.coach}   </p>             
+                              </div>
+                    )): <></>}
 
-            {user_teams ? user_teams.map(equipe => (
-                      <div>
-                          <a className={styles.card} href={'/equipe/'+ equipe.id}  >
-                              <Link href={'/equipe/'+ equipe.id}  > Detaile de l'equipe </Link>   
-                                  Nom : {equipe.nom}
-                                  Entraineur : {equipe.coach}                
-                                <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" ></img>  
-                            </a>
-                      </div>
-            )): <></>}
+            </div>
 
-          
         </div>
 
+        </>
 
 
       }
