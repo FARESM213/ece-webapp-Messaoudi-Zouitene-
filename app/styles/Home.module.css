@@ -246,6 +246,10 @@
   background-color: #45a049;
 }
 
+.ouais
+{
+  height: fit-content;
+}
 
 
 .btnA{
@@ -486,6 +490,37 @@
   background-color: #f8f8f8;
 }
 
+.userform6{
+  width: 60%;
+  align-items: center;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 3%;
+}
+
+.userform6 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform6 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.userform6 input[type="text"],
+.userform6 input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
 .userform3 {
   width: 70%;
   padding: 20px;
@@ -506,12 +541,58 @@
   margin-bottom: 10px;
 }
 
+
+
+.userform4{
+  width: 70%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: -10px 200px; /* ajout d'un marge de 10px à gauche et à droite */
+  align-items: center;
+  height: fit-content;
+  margin-bottom: 50px;
+
+}
+
+.userform4 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform4 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
 .decale
 { 
   margin-top: 8%;
   margin-bottom: 3%;
   margin-left: 5%;
 }
+
+.pays 
+{ 
+  margin-top: 8%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.pays img
+{ 
+  margin-bottom: 3%;
+  margin-left: 45%;
+}
+
+
+.pays button
+{ 
+  margin-left: 90%;
+}
+
 
 .decale2
 { 
