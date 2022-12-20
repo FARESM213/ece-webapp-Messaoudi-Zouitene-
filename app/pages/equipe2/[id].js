@@ -120,7 +120,7 @@ export default function Profile({ equipe,comment }) {
                    
                     <input type="text" id="Coatch" name="Coatch" defaultValue={equipe.nom|| ''}/> <br/>
                     
-                    <label>Nom en anglais</label>
+                    <label>Nom en anglai</label>
                     <input type="text" id="anglais" name="anglais" defaultValue={equipe.nom|| ''}/> <br/>
                     
                     <label>Liste des joueurs</label>
