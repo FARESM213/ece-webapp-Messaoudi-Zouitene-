@@ -10,8 +10,17 @@ const supabase=getServiceSupabase();
 
 export const getServerSideProps = async ({params}) => {
 
-const {data : equipe,erreur}= await supabase.from('equipe').select('*').eq('id',params.id).single()
+let {data : equipe,erreur}= await supabase.from('equipe').select('*').eq('id',params.id).single()
 const {data : comment,erreur2}= await supabase.from('comments').select('*').eq('equipe_id',params.id)
+
+
+equipe={
+
+  id:3,
+  nom : "France",
+  coach : "Dédé"
+
+}
 
 return {
     props :
@@ -81,47 +90,7 @@ export default function Profile({ equipe,comment }) {
       router.push('/equipe/'+equipe.id)
     }
 
-      if((user==null)||(user.id!=equipe.user_id))
       {
-        
-        return (
-          <div>
-                  Nom : {equipe.nom}
-                  Entraineur : {equipe.coach}
-                  <div className={styles.userform2} >
-                    <h2> Espace Commentaires :  </h2>
-                  {
-                    user?<button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>: <button className={styles.yes} onClick={async()=>router.push("/Login")} > Connect </button>
-                  }
-                  <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-
-                   <div className={styles.scroll2}> 
-                      <ul>
-                      {comment.map(com => (
-                                                    <div className={styles.card2} key={com.id} >
-                                                      <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
-                                                            Id : {com.id} <br/>
-                                                            User_id : {com.user_id}    <br/>
-                                                            equipe_id :   {com.equipe_id}  <br/>      
-                                                            content : {com.content}      <br/>
-                                                            {
-                                                              user?( com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>):<></>
-                                                            }
-                                                            {
-                                                              user?(  com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>):<></>
-                                                            }
-                                                    </div>
-                                                ))
-                      }
-                      </ul>
-                  </div>
-                  </div>
-          </div>
-      )
-      }
-      else
-      {
-
             return (
 
           <div>

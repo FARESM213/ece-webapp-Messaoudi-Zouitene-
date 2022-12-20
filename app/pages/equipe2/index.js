@@ -32,6 +32,59 @@ const equipe = ({flag}) => {
     return <p>Aucune Equipes </p>
   }
 
+  equipes=[
+
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+
+    },
+    { id:3,
+      nom : "France",
+      coach : "Dédé"
+
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+
+    },
+    {
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+
+    },
+    {  
+      id:3,
+      nom : "France",
+      coach : "Dédé"
+    },
+
+  ]
 
 
   function Loadflag(name,flag)
@@ -52,7 +105,7 @@ const equipe = ({flag}) => {
 
         {equipes.map(equipe => (
           <div className={styles.card}  key={equipe.id}>
-              <a href={'/equipe/'+ equipe.id}  >
+              <a href={'/equipe2/'+ equipe.id}  >
                       <h2>{equipe.nom}</h2>
                       <p>{equipe.coach}  </p>              
                     <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>  

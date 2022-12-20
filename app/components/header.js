@@ -12,14 +12,15 @@ export default function Header() {
 
     return (
       <header>
-          <div class="header">
+          <div className="header">
           <SignedIn/>  
 
-          <a  class="logo" > <img src="../logoooo.png" width="200" ></img></a>
-          <div class="header-right">  
-          <Link class="active" href="/" >Home </Link>   
-          <Link class="active" href="/profile" >Profile </Link>
-     
+          <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
+          <div className="header-right">  
+          <Link className="active" href="/" >Home </Link>   
+          <Link className="active" href="/profile" >Profile </Link>
+          <Link href="/equipe">Equipes</Link>
+
           <Link href="/contacts">Contact</Link>
           <Link href="/AjouterPays">About Us</Link>
           </div>
@@ -33,14 +34,15 @@ export default function Header() {
 
     return (
       <header>
-          <div class="header">
+          <div className="header">
 
           <pre>Aucun utilisateur connecté </pre>
-          <a  class="logo" > <img src="../logoooo.png" width="200" ></img></a>
-          <div class="header-right">
+          <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
+          <div className="header-right">
             
-          <Link class="active" href="/" >Home </Link>
-          <Link class="active" href="/Login" >Login </Link>
+          <Link className="active" href="/" >Home </Link>
+          <Link className="active" href="/Login" >Login </Link>
+          <Link href="/equipe">Equipes</Link>
 
           <Link href="/contacts">Contact</Link>
 

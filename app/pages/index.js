@@ -14,11 +14,11 @@ export default function Home() {
           <img src="lol.png" width="400" length="400" alt="amerique image"/>
         </h1>
         
-        <p className={styles.description}>
-        
-         <strong>Choose your continent and Find which teams have qualified for Qatar tournament !</strong> 
-         
-        </p>  
+        <div className={styles.description}>
+        <p className={styles.card}>
+         <strong>Choose your continent and Find which teams have qualified for Qatar tournament ! </strong> 
+        </p>
+        </div>  
 
       <div className={styles.grid}>
         <a href="/America" className={styles.card}>

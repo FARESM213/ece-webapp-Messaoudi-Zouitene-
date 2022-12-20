@@ -24,6 +24,7 @@
     "@supabase/auth-ui-react": "^0.2.6",
     "@supabase/supabase-js": "^2.2.1",
     "@supabase/ui": "^0.36.5",
+    "crypto-js": "^4.1.1",
     "express": "^4.18.1",
     "nodemon": "^2.0.20",
     "react-query": "^3.39.2",
