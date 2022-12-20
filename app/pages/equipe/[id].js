@@ -67,107 +67,97 @@ export default function Profile({ equipe,comment }) {
       router.push('/equipe/'+equipe.id)
     }
 
-      if(user==null)
-      {
-        return ( 
-          <div>
-            Nom : {equipe.nom}
-            Entraineur : {equipe.coach}
-          </div>
-      )
-      }
-      else
-      {
+    if(user.id==equipe.user_id)
+    {
+        return (
 
-        if(user.id==equipe.user_id)
-        {
-            return (
-
-          <div>
-                <div className={styles.inputgroupA}>
-                    <label>Nom de l'équipe</label>
-                    <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
-
-                <div className={styles.inputgroupA}>
-                    <label>Composition</label>
-                    <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
-                    <label>Entraineur</label>
-                    <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
-                    <label>Dernière victoire</label>
-                    <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
-                
-                <div className={styles.inputgroupA}>
-                <label>Continent</label>
-                        <select name="categorie" className={styles.liste}>
-                
-                            <option value="amerique" >Amérique</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Asie">Asie</option>
-                            <option value="Afrique">Afrique</option>
-                
-                        </select>
-                </div> <br/> <br/>   
-                                     
-                <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
-                <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
-
-                <div>
-                        <label> Espace Commentaires :  </label>
-                        <button onClick={async()=>insert(equipe.id)} > Add + </button>
-                        <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-                        <ul>
-                        {comment.map(com => (
-                                        <li className={styles.card}  >
-
-                                                Id : {com.id} <br/>
-                                                User_id : {com.user_id}    <br/>
-                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                content : {com.content}      <br/>
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
-                                        </li>
-                                    ))
-                        }
-                        </ul>
-                </div>
-          </div>
-            )
-        }
-        else
-        {
-          return (
-            <div>
-                    Nom : {equipe.nom}
-                    Entraineur : {equipe.coach}
-                    <div>
-                        <label> Espace Commentaires :  </label>
-                        <button onClick={async()=>insert(equipe.id)} > Add + </button>
-                        <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-                        <ul>
-                        {comment.map(com => (
-                                        <li className={styles.card}  >
-                                                Id : {com.id} <br/>
-                                                User_id : {com.user_id}    <br/>
-                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                content : {com.content}      <br/>
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
-                                                { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
-
-                                        </li>
-                                    ))
-                        }
-                        </ul>
-                    </div>
+      <div>
+            <div className={styles.inputgroupA}>
+                <label>Nom de l'équipe</label>
+                <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
             </div>
+
+            <div className={styles.inputgroupA}>
+                <label>Composition</label>
+                <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
+            </div>
+            
+            <div className={styles.inputgroupA}>
+                <label>Entraineur</label>
+                <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
+            </div>
+            
+            <div className={styles.inputgroupA}>
+                <label>Dernière victoire</label>
+                <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
+            </div>
+            
+            <div className={styles.inputgroupA}>
+            <label>Continent</label>
+                    <select name="categorie" className={styles.liste}>
+            
+                        <option value="amerique" >Amérique</option>
+                        <option value="Europe">Europe</option>
+                        <option value="Asie">Asie</option>
+                        <option value="Afrique">Afrique</option>
+            
+                    </select>
+            </div> <br/> <br/>   
+                                 
+            <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
+            <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
+
+            <div>
+                    <label> Espace Commentaires :  </label>
+                    <button onClick={async()=>insert(equipe.id)} > Add + </button>
+                    <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+                    <ul>
+                    {comment.map(com => (
+                                    <li className={styles.card}  >
+
+                                            Id : {com.id} <br/>
+                                            User_id : {com.user_id}    <br/>
+                                            equipe_id :   {com.equipe_id}  <br/>      
+                                            content : {com.content}      <br/>
+                                            { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
+                                            { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
+                                    </li>
+                                ))
+                    }
+                    </ul>
+            </div>
+      </div>
         )
-        }
-      }
-}
+    }
+    else
+    {
+      return (
+        <div>
+                Nom : {equipe.nom}
+                Entraineur : {equipe.coach}
+                <div>
+                    <label> Espace Commentaires :  </label>
+                    <button onClick={async()=>insert(equipe.id)} > Add + </button>
+                    <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
+                    <ul>
+                    {comment.map(com => (
+                                    <li className={styles.card}  >
+                                            Id : {com.id} <br/>
+                                            User_id : {com.user_id}    <br/>
+                                            equipe_id :   {com.equipe_id}  <br/>      
+                                            content : {com.content}      <br/>
+                                            { equipe.user_id==user.id?(<button onClick={async()=>Delete2(com.id)} >DELETE</button>):<></>}
+                                            { equipe.user_id==user.id?(<button onClick={async()=>Update2(com.id)} >Update</button>):<></>}
+
+                                    </li>
+                                ))
+                    }
+                    </ul>
+                </div>
+        </div>
+    )
+    }
+  }
+
+    
+

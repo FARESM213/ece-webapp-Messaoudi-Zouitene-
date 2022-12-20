@@ -15,32 +15,29 @@ export default function Home() {
         </h1>
         
         <p className={styles.description}>
-        <a  className={styles.card}>
-         <strong>Choose your continent and Find which teams have qualified for Qatar tournament ! </strong> 
-         </a>
+        
+         <strong>Choose your continent and Find which teams have qualified for Qatar tournament !</strong> 
+         
         </p>  
 
       <div className={styles.grid}>
-        <a href="/America"className={styles.card}>
-            <h2>America &rarr;</h2>
+        <a href="/America" className={styles.card}>
+            <h2>America</h2>
             <img src="amerique.png" width="400" length="400" alt="amerique image"/>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Africa &rarr;</h2>
+            <h2>Africa</h2>
             <img src="afrique.png" width="400"  length="400"  alt="afrique image"/>
           </a>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Asia &rarr;</h2>
+          <a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
+            <h2>Asia</h2>
             <img src="asiii2.png" width="400" length="400" alt="asia image"/>
           </a>
 
           <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Europe &rarr;</h2>
+            <h2>Europe</h2>
             <img src="europe12.png" width="400" length="400" alt="europe image"/>
           </a>
 
