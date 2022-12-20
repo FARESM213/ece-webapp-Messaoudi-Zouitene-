@@ -4,7 +4,7 @@ import UserContext from '../../components/UserContext'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
-import MD5 from 'crypto-js/md5';
+
 
 const supabase=getServiceSupabase();
 
@@ -110,29 +110,37 @@ export default function Profile({ equipe,comment }) {
             return (
 
           <div>
-                <div className={styles.inputgroupA}>
+                
+                <form className={styles.teamdata} >
                     <label>Nom de l'équipe</label>
+                   
                     <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
+                    
+                    <label>Coatch</label>
+                   
+                    <input type="text" id="Coatch" name="Coatch" defaultValue={equipe.nom|| ''}/> <br/>
+                    
+                    <label>Nom en anglais</label>
+                    <input type="text" id="anglais" name="anglais" defaultValue={equipe.nom|| ''}/> <br/>
+                    
+                    <label>Liste des joueurs</label>
+                   
+                    <input type="text" id="joueurs" name="joueurs" defaultValue={equipe.nom|| ''}/> <br/>
+               
 
-                <div className={styles.inputgroupA}>
                     <label>Composition</label>
+                  
                     <input type="text" id="Composition" name="Composition"  defaultValue={equipe.nom|| ''}/> <br/>
-                </div>
+             
                 
-                <div className={styles.inputgroupA}>
-                    <label>Entraineur</label>
-                    <input type="text" id="Entraineur" name="Entraineur"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
                 
-                <div className={styles.inputgroupA}>
                     <label>Dernière victoire</label>
                     <input type="text" id="victoire" name="victoire"  defaultValue={equipe.coach|| ''} /> <br/>
-                </div>
+             
                 
-                <div className={styles.inputgroupA}>
+             
                 <label>Continent</label>
-                        <select name="categorie" className={styles.liste}>
+                        <select name="categorie" className={styles.li}>
                 
                             <option value="amerique" >Amérique</option>
                             <option value="Europe">Europe</option>
@@ -140,11 +148,17 @@ export default function Profile({ equipe,comment }) {
                             <option value="Afrique">Afrique</option>
                 
                         </select>
-                </div> <br/> <br/>   
-                                     
-                <button onClick={async()=>Update(equipe.id)}> Modifier </button><br/>
-                <button onClick={async()=>Delete(equipe.id)} > Supprimer </button>
+                      
+               <td>
+              <div>              
+              <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
+              <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>
+              </div>
+              </td>
+              </form>       
 
+                <br></br> <br></br>
+                <form className={styles.teamdata} >
                 <div className={styles.userform2} >
                     <h2> Espace Commentaires :  </h2>
                     <button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>
@@ -153,7 +167,7 @@ export default function Profile({ equipe,comment }) {
                     <div className={styles.scroll2}>
                             {comment.map(com => (
                                                     <div className={styles.card2} key={com.id} >
-                                                    <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="80" length="80" />  
+ 
                                                                   Id : {com.id} <br/>
                                                                   User_id : {com.user_id}    <br/>
                                                                   equipe_id :   {com.equipe_id}  <br/>      
@@ -164,9 +178,14 @@ export default function Profile({ equipe,comment }) {
                                                       ))
                             }
                     </div>
-                </div>
 
+                                 
+          
+                </div>
+                </form>  
           </div>
+        
             )
+
       }
 }

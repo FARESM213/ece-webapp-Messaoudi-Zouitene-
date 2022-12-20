@@ -383,3 +383,118 @@
   font-size: 1rem;
   line-height: 1.5;
 }
+
+
+
+.teamdata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.teamdata label {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.teamdata ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.teamdata input[type="text"] ,
+.teamdata input[type="categorie"]{
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+
+.addteamform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addteamform label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.addteamform input[type="text"],
+.addteamform input[type="file"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+
+.teamdata button[type="submit"] {
+  width: 100%;
+  background-color: #a03c3c;
+  color: white;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.teamdata button[type="submit"]:hover {
+  background-color: #b37373;
+}
+
+.teamdata button[type="submit1"] {
+  width: 100%;
+  background-color: #64974d;
+  color: white;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  margin-right: 635px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.teamdata button[type="submit1"]:hover {
+  background-color: #86c489;
+}
+
+.teamdata td div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.teamdata select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px; 
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
