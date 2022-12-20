@@ -11,7 +11,7 @@ const supabase=getServiceSupabase();
 export const getServerSideProps = async ({params}) => {
 
 let {data : equipe,erreur}= await supabase.from('equipe').select('*').eq('id',params.id).single()
-const {data : comment,erreur2}= await supabase.from('comments').select('*').eq('equipe_id',params.id)
+let {data : comment,erreur2}= await supabase.from('comments').select('*').eq('equipe_id',params.id)
 
 
 equipe={
@@ -21,6 +21,19 @@ equipe={
   coach : "Dédé"
 
 }
+
+
+comment=
+  [
+
+    { id:3,
+      user_id : "12345667887432114567",
+      equipe_id : "3",
+      content : "commentaire test pour lydia"
+    }
+
+  ]
+
 
 return {
     props :
@@ -32,9 +45,12 @@ return {
 }
 
 export default function Profile({ equipe,comment }) {
-  const { user, logout, loading } = useContext(UserContext)
+  let { user, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
+
+    user={id:3}
+
 
     useEffect(() => {
         async function loadData() {
