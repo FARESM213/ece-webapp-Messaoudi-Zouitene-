@@ -7,6 +7,7 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 import MD5 from 'crypto-js/md5';
+import Link from 'next/link'
 
 export const getStaticProps =async ()=>{
   const res= await fetch("https://flagcdn.com/fr/codes.json")
@@ -162,8 +163,11 @@ export default function Contact({flag}) {
       
       alert('Profile updated!')
 
+
       setUsername(username)
-      getProfile()
+      getProfile()      
+      router.push("/profile")
+
     } catch (error) {
       console.log(error)
     } finally {
@@ -199,7 +203,8 @@ async function Delete(id) {
 }
 
 async function Update(id) {
-  alert("Ok pour le moment on fait rien"+id)
+  router.push('/equipe/edit/'+id)
+
 }
 
 
@@ -290,7 +295,7 @@ async function Update(id) {
                                     {user_teams ? user_teams.map(equipe => (
                                               <div className={styles.card2} key={equipe.id}>
                                                       <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
-                                                      <h2>Detail de l'equipe</h2>  
+                                                      <h2><Link href={"/equipe/"+equipe.id}>Detail de l'equipe</Link></h2> 
                                                           <p>Nom : {equipe.nom}</p>
                                                           <p>Entraineur : {equipe.coach}   </p>     
                                                           { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete(equipe.id)} > Delete </button>):<></>}

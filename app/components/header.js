@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/equipe">Equipes</Link>
 
           <Link href="/contacts">Contact</Link>
-          <Link href="/AjouterPays">About Us</Link>
+          {/* <Link href="/AjouterPays">About Us</Link> */}
           </div>
           </div> 
       </header>
@@ -46,7 +46,7 @@ export default function Header() {
 
           <Link href="/contacts">Contact</Link>
 
-          <Link href="/AjouterPays">About Us</Link>
+          {/* <Link href="/AjouterPays">About Us</Link> */}
           </div>
           </div> 
       </header>
