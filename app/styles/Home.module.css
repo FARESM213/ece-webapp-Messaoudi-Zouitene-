@@ -125,6 +125,11 @@
 }
 
 
+.link :hover
+{
+  cursor: pointer;
+}
+
 
 .addteamform {
   display: flex;
@@ -436,7 +441,6 @@ margin-right: 1% ;
 .teamdata label {
   font-size: 19px;
   margin-bottom: 10px;
-  color: #333;
 }
 
 .teamdata ul {
@@ -454,6 +458,21 @@ margin-right: 1% ;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f8f8f8;
+  color: black;
+
+}
+
+.teamdata select[type="text"] ,
+.teamdata option[type="text"]{
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  color: black;
+
 }
 
 
@@ -733,4 +752,12 @@ margin-right: 1% ;
 }
 
 
+.dark {
+  background-color: var(--clr-bg-dark);
+  color: var(--clr-text-dark);
+}
 
+.light {
+  background-color: var(--clr-bg-light);
+  color: var(--clr-text-light);
+}

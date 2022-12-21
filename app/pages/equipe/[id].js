@@ -63,7 +63,7 @@ export default function Profile({ equipe,comment,flag}) {
     }
     async function Update(id) {
 
-      router.push('/equipe/edit/'+id)
+      router.push('/edit/'+id)
     }
 
 

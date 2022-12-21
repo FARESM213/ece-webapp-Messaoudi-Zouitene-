@@ -1,6 +1,7 @@
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect, useState } from 'react'
 import styles from '../../styles/Home.module.css'
+import Link from 'next/link'
 
 export const getServerSideProps =async ({params})=>{
 
@@ -69,11 +70,16 @@ const equipe = ({flag,nom}) => {
   
           {equipes.map(equipe => (
             <div className={styles.card}  key={equipe.id}>
-                <a href={'/equipe/'+ equipe.id}  >
-                        <h2>{equipe.nom}</h2>
-                        <p>{equipe.coach}  </p>              
-                      <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>  
-                  </a>
+
+              <a href=''>
+              <Link href={'/equipe/'+ equipe.id}>
+                  <div>
+                      <h2>{equipe.nom}</h2>
+                          <p>{equipe.coach}  </p>              
+                        <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="300" length="300" ></img>  
+                  </div>
+                </Link>
+                </a>
             </div>
           ))}
   

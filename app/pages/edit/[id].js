@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
-import { getServiceSupabase } from '../../../supabase'
-import UserContext from '../../../components/UserContext'
+import UserContext from '../../components/UserContext'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
-import styles from '../../../styles/Home.module.css'
-import MD5 from 'crypto-js/md5';
-
+import styles from '../../styles/Home.module.css'
+import { getServiceSupabase } from '../../supabase'
 const supabase=getServiceSupabase();
-
 export const getServerSideProps = async ({params}) => {
 
 const {data : equipe,erreur}= await supabase.from('equipe').select('*').eq('id',params.id).single()
@@ -26,6 +23,8 @@ export default function Profile({ equipe,comment }) {
   const { user, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
+  const [darkMode, setDarkMode] =useState()
+
   const compo = ['3-1-4-2', '3-4-1-2', '3-4-2-1','3-4-3','3-5-1-1','3-5-2','4-1-2-1-2','4-1-3-2' ,'4-1-4-1','4-2-2-2','4-2-3-1','4-2-4','4-3-1-2','4-3-2-1','4-3-3','4-4-1-1','4-4-2','4-5-1','5-2-1-2','5-2-2-1','5-2-3','5-3-2','5-4-1'];
 
     useEffect(() => {
@@ -86,8 +85,9 @@ export default function Profile({ equipe,comment }) {
           <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
 
             <div className={styles.teamdata} >
+              
                     <label>Nom de l'équipe</label>
-                    <input type="text" id="equipe" name="equipe" required defaultValue={equipe.nom|| ''}/> <br/>
+                    <input type={darkMode?"categorie2":"text"} id="equipe" name="equipe" required defaultValue={equipe.nom|| ''}/> <br/>
                     <label>Coach</label>
                     <input type="text" id="Entraineur" name="Entraineur" required defaultValue={equipe.coach|| ''}/> <br/>
                     <label>Nom en anglais</label>
@@ -103,23 +103,26 @@ export default function Profile({ equipe,comment }) {
                     </select>             
               
                 <label>Continent</label>
-                        <select  id="continent" name="continent" className={styles.li} defaultValue={equipe.Continent|| ''}>
-                            <option value="amerique" >Amérique</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Asie">Asie</option>
-                            <option value="Afrique">Afrique</option>
+                        <select type="text" id="continent" name="continent" className={styles.li} defaultValue={equipe.Continent|| ''}>
+                            <option type="text" value="amerique" >Amérique</option>
+                            <option type="text"value="Europe">Europe</option>
+                            <option type="text"value="Asie">Asie</option>
+                            <option type="text" value="Afrique">Afrique</option>
                         </select>
-                      
-                  <tr>      
-        
-                    <th>
-                        <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>                      
-                    </th>     
-                    <th>
-                       <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
-                    </th>
-                          
-                  </tr>
+
+                        <table>
+                          <tbody>
+                            <tr>      
+                                <th>
+                                    <button type="submit" onClick={async()=>Delete(equipe.id)} > Supprimer </button>                      
+                                </th>
+                                <th>
+                                    <button type="submit1" onClick={async()=>Update(equipe.id)}> Modifier </button>
+                                </th>
+                            </tr>
+                          </tbody>         
+                        </table>
+                  
               </div>  
         </div>
             )

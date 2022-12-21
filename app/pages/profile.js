@@ -201,7 +201,7 @@ async function Delete(id) {
 }
 
 async function Update(id) {
-  router.push('/equipe/edit/'+id)
+  router.push('/edit/'+id)
 
 }
 

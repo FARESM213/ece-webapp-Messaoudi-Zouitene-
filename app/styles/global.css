@@ -2,13 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-white {
+    background-color: white;
+  }
+}
+
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
 
 .header {
 @apply overflow-hidden bg-gray-200;
-background-color: rgba(241, 241, 241, 1)
+background-color: rgba(241, 241, 241, 1)'dark:bg-black'
 }
 
 .header a {
@@ -34,3 +41,37 @@ background-color: rgba(97, 106, 116, 1)
 @apply float-right p-5
 }
 
+
+
+.header2 {
+  @apply overflow-hidden bg-gray-200;
+  @apply bg-gray-700 text-zinc-50
+  }
+  
+  .header2 a {
+  @apply float-left text-zinc-50 text-center p-3 no-underline text-lg leading-6 rounded
+  }
+  
+  .header2 a.logo {
+  @apply text-2xl font-bold;
+  font-weight: bold;
+  }
+  
+  .header2 a.hover{
+  @apply text-white
+  }
+  
+  
+  .header2 a.active {
+  @apply bg-gray-700 text-white;
+  @apply bg-gray-800 text-zinc-50
+  }
+  
+  .header2-right {
+  @apply float-right p-5
+  
+  }
+
+.dark {
+  @apply bg-gray-800 text-zinc-50
+}

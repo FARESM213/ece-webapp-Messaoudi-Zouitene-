@@ -7,13 +7,23 @@ import '../styles/global.css'
 
 export default function MyApp({ Component, pageProps }) {
   const [supabaseClient] = useState(() => createBrowserSupabaseClient())
+
+  const [darkMode, setDarkMode] =useState(false)
+  
+  function toggleDarkMode() {
+    setDarkMode(prevDarkMode => !prevDarkMode)
+  }
+
   return (
     <SessionContextProvider
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession} 
     >
       <UserContextProvider>
-       <Layout>
+       <Layout  
+       darkMode={darkMode} 
+       toggleDarkMode={toggleDarkMode} 
+    >
          <Component {...pageProps} />       
         </Layout>
       </UserContextProvider>
