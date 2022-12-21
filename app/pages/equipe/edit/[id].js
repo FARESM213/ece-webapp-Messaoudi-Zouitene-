@@ -36,29 +36,13 @@ export default function Profile({ equipe,comment }) {
       })
 
 
-      async function getMD(id) {
-        const data= await supabase.from('profiles').select("email").eq('id', id).single()
-        if(data)
-        {        
-          alert(MD5(data.email))
-
-          return MD5(""+data.email)
-        }
-
-    }
-
     async function Delete(id) {
               
           const { error } = await supabase.from('equipe').delete().eq('id', id)
           alert('Equipe supprimé')
           router.push('/equipe')
     }
-    async function Delete2(id) {
-              
-        const { error } = await supabase.from('comments').delete().eq('id', id)
-        alert('Commentaire supprimé')
-        router.push('/equipe/'+equipe.id)
-    }
+
     async function Update(id) {
 
         const equipe =document.getElementById("equipe").value;
@@ -81,6 +65,8 @@ export default function Profile({ equipe,comment }) {
         }
 
       const { error } = await supabase.from('equipe').update(updates).eq('id', id)   
+      let { error:error2 } = await supabase.from('comments').update({equipe_nom:equipe}).eq('equipe_id',id)
+
       router.push('/equipe')
     }
 
@@ -93,60 +79,21 @@ export default function Profile({ equipe,comment }) {
       const { error } = await supabase.from('comments').insert({equipe_id:id, user_id:user.id,content:commentaires,user_email:user.email})  
       router.push('/equipe/'+equipe.id)
     }
-
-      if((user==null)||(user.id!=equipe.user_id))
-      {
-        
-        return (
-          <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
-                  Nom : {equipe.nom}
-                  Entraineur : {equipe.coach}
-                  <div className={styles.userform2} >
-                    <h2> Espace Commentaires :  </h2>
-                  {
-                    user?<button className={styles.yes} onClick={async()=>insert(equipe.id)} > Add + </button>: <button className={styles.yes} onClick={async()=>router.push("/Login")} > Connect </button>
-                  }
-                  <input type="text" id="comm" name="comm" placeholder="Ecrivez votre commentaire sur l'equipe" /> <br/>
-
-                   <div className={styles.scroll2}> 
-                      <ul>
-                      {comment.map(com => (
-                                                    <div className={styles.card2} key={com.id} >
-                                                      <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
-                                                            Id : {com.id} <br/>
-                                                            User_id : {com.user_id}    <br/>
-                                                            equipe_id :   {com.equipe_id}  <br/>      
-                                                            content : {com.content}      <br/>
-                                                            {
-                                                              user?( com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>):<></>
-                                                            }
-                                                            {
-                                                              user?(  com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>):<></>
-                                                            }
-                                                    </div>
-                                                ))
-                      }
-                      </ul>
-                  </div>
-                  </div>
-          </div>
-      )
-      }
-      else
       {
 
             return (
 
           <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
+
             <div className={styles.teamdata} >
                     <label>Nom de l'équipe</label>
-                    <input type="text" id="equipe" name="equipe" defaultValue={equipe.nom|| ''}/> <br/>
+                    <input type="text" id="equipe" name="equipe" required defaultValue={equipe.nom|| ''}/> <br/>
                     <label>Coach</label>
-                    <input type="text" id="Entraineur" name="Entraineur" defaultValue={equipe.coach|| ''}/> <br/>
+                    <input type="text" id="Entraineur" name="Entraineur" required defaultValue={equipe.coach|| ''}/> <br/>
                     <label>Nom en anglais</label>
-                    <input type="text" id="anglais" name="anglais" defaultValue={equipe.flag|| ''}/> <br/>
+                    <input type="text" id="anglais" name="anglais" required defaultValue={equipe.flag|| ''}/> <br/>
                     <label>Liste des joueurs</label>
-                    <input type="text" id="joueurs" name="joueurs" defaultValue={equipe.Liste_joueurs|| ''}/> <br/>
+                    <input type="text" id="joueurs" name="joueurs" required defaultValue={equipe.Liste_joueurs|| ''}/> <br/>
                     <label>Composition</label>
                   
                     <select  type="text" id="Composition" name="Composition" defaultValue={equipe.Composition|| ''}>
@@ -173,8 +120,8 @@ export default function Profile({ equipe,comment }) {
                     </th>
                           
                   </tr>
-              </div>                   
-          </div>
+              </div>  
+        </div>
             )
       }
 }

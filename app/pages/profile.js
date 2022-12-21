@@ -5,7 +5,6 @@ import UserContext from '../components/UserContext'
 import { useSupabaseClient, useSession } from '@supabase/auth-helpers-react'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-
 import MD5 from 'crypto-js/md5';
 import Link from 'next/link'
 
@@ -133,13 +132,13 @@ export default function Contact({flag}) {
 
   async function getTeams(id) {
 
-    let { data, error, status } = await supabase.from('equipe').select("*").eq('user_id', id)
+    let { data, error, status } = await supabase.from('equipe').select("*").eq('user_id', id).order('nom', { ascending: true })
     setTeams((data))
   }
 
   async function getComments(id)
   {
-    let { data, error, status } = await supabase.from('comments').select("*").eq('user_id',id)
+    let { data, error, status } = await supabase.from('comments').select("*").eq('user_id',id).order('updated_at', { ascending: false })
     setComment((data))
   }
 
@@ -158,14 +157,12 @@ export default function Contact({flag}) {
       }
 
       let { error } = await supabase.from('profiles').upsert(updates)    
-      
+      let { error:error2 } = await supabase.from('comments').update({user_username:username}).eq('user_id',user.id)
       if (error) throw error
-      
       alert('Profile updated!')
-
-
       setUsername(username)
-      getProfile()      
+      getProfile()
+      getComments(user.id)
       router.push("/profile")
 
     } catch (error) {
@@ -188,7 +185,8 @@ export default function Contact({flag}) {
 
 
 async function Update2(id) {
-  alert("Ok pour le moment on fait rien"+id)
+
+  router.push("/comments/"+id)
 }
 
 
@@ -266,15 +264,21 @@ async function Update(id) {
                         <div className={styles.scroll2}>
 
                                 {user_comments ? user_comments.map(com => (
-                                                                        <div className={styles.card2}  key={com.id}>
-                                                                          <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
-                                                                                Id : {com.id} <br/>
-                                                                                User_id : {com.user_id}    <br/>
-                                                                                equipe_id :   {com.equipe_id}  <br/>      
-                                                                                content : {com.content}      <br/>
+                                                                      <div className={styles.card2}  key={com.id}>            
+                                                                       <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(com.equipe_nom,flag)+".jpg"} width="50" length="50" /> 
+               
+                                                                       <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
+                                                                        <h1 >{com.user_username} : </h1>
+
+                                                                        <p type="p1"> {com.content}    </p> 
                                                                                 { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
                                                                                 { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
-                                                                        </div>
+                                                                    
+                                                                         <h6> {"Le "+new Date(com.updated_at).getDate()+"-"+(new Date(com.updated_at).getMonth()+1)+"-"+new Date(com.updated_at).getFullYear()+" à "+new Date(com.updated_at).getHours()+"h"+new Date(com.updated_at).getMinutes()} </h6> 
+
+                                                                      </div>
+
+                                                                                                                     
                                                                     )): <></>
                                 }
 
@@ -294,12 +298,13 @@ async function Update(id) {
                             <div className={styles.scroll2}>
                                     {user_teams ? user_teams.map(equipe => (
                                               <div className={styles.card2} key={equipe.id}>
-                                                      <img src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
+                                                      <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
                                                       <h2><Link href={"/equipe/"+equipe.id}>Detail de l'equipe</Link></h2> 
-                                                          <p>Nom : {equipe.nom}</p>
-                                                          <p>Entraineur : {equipe.coach}   </p>     
+                                                          <h5 type="equipe">Nom : {equipe.nom}</h5>
+                                                          <h5 type="equipe">Coach : {equipe.coach}   </h5>     
+
                                                           { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete(equipe.id)} > Delete </button>):<></>}
-                                                              { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update(equipe.id)} >Edit</button>):<></>}        
+                                                          { equipe.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update(equipe.id)} >Edit</button>):<></>}        
                                               </div>
                                     )): <></>}
 

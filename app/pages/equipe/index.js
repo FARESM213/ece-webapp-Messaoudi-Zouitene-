@@ -22,7 +22,7 @@ const equipe = ({flag}) => {
   useEffect(() => {
     async function FetchEquipes() 
     {
-        const {data : equipes } = await supabaseClient.from('equipe').select('*')
+        const {data : equipes } = await supabaseClient.from('equipe').select('*').order('nom', { ascending: true })
         setEquipe(equipes)
     }
     FetchEquipes()
