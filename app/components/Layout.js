@@ -54,7 +54,7 @@ export default function Layout({children}){
 
 
   return (
-<div className={`h-full w-full mx-auto py-2 ${darkMode ? "dark" : orangeMode?"orange":greenMode?"green":blueMode?"blue":"light"}`}>
+<div className={`${darkMode ? "dark" : orangeMode?"orange":greenMode?"green":blueMode?"blue":"light"}`}>
       <Header   darkMode={darkMode} 
         orangeMode={orangeMode} 
         greenMode={greenMode} 
