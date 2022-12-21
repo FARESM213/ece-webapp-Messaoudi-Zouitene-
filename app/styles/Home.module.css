@@ -278,6 +278,14 @@
   overflow-y: scroll;
 }
 
+.aucun
+{
+  height: 100%;
+  text-align: center;
+  position :relative;
+
+}
+
 .scroll2 {
   height: 350px; 
   width:100%;

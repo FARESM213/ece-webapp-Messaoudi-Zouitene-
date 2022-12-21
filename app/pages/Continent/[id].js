@@ -1,20 +1,22 @@
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../../styles/Home.module.css'
 
-export const getStaticProps =async ()=>{
+export const getServerSideProps =async ({params})=>{
+
   const res= await fetch("https://flagcdn.com/fr/codes.json")
   const dat= await res.json();
 
   return {
-    props:{flag : dat}
-
+    props:{
+        flag : dat,
+        nom : params.id
+    }
   }
 }
 
 
-const equipe = ({flag}) => {
+const equipe = ({flag,nom}) => {
 
   const supabaseClient = useSupabaseClient()
   const [equipes, setEquipe] = useState(null)
@@ -22,12 +24,12 @@ const equipe = ({flag}) => {
   useEffect(() => {
     async function FetchEquipes() 
     {
-        const {data : equipes } = await supabaseClient.from('equipe').select('*').order('nom', { ascending: true })
+        const {data : equipes } = await supabaseClient.from('equipe').select('*').eq("Continent",nom).order('nom', { ascending: true })
         setEquipe(equipes)
     }
     FetchEquipes()
   }, [])
-  
+
   function Loadflag(name,flag)
   {  
       var flag2=-1
@@ -39,7 +41,7 @@ const equipe = ({flag}) => {
         }
     return  flag2;
   }
-
+  
   if (!equipes) {    
     return (
       <div  className={styles.aucun}>
@@ -81,6 +83,8 @@ const equipe = ({flag}) => {
 
 
   }
+
+
 }
 
 export default equipe;
