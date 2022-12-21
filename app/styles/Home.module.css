@@ -3,7 +3,6 @@
   
 }
 
-
 .main {
   min-height: 100vh;
   padding: 4rem 0;
@@ -86,6 +85,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 500px;
+  width : 100%;
 }
 
 .card:hover,
@@ -401,8 +401,6 @@
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
-  margin-left: 10%;
-
 
 }
 
@@ -421,7 +419,6 @@
   border-radius: 4px;
   cursor: pointer;
   text-align: center;
-  margin-left: 80%;
 
 }
 
@@ -429,7 +426,7 @@
   background-color: #86c489;
 }
 
-.teamdata td div {
+.teamdata div {
   display: flex;
   justify-content: space-between;
 }
