@@ -71,6 +71,6 @@ export default function Comments({com,flag}) {
                           </div>
                   </div>
 
-                 </div>        
+          </div>        
       )
 }
