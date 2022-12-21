@@ -7,6 +7,7 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import MD5 from 'crypto-js/md5';
 import Link from 'next/link'
+import { useUser } from 'supabase-comments-extension'
 
 export const getStaticProps =async ()=>{
   const res= await fetch("https://flagcdn.com/fr/codes.json")
@@ -32,7 +33,7 @@ function getBase64Image(img) {
 export default function Contact({flag}) {
 
   const session= useSession()
-  const { user, logout, loading,teams,comments} = useContext(UserContext)
+  const { user, logout, loading,teams,comments,update} = useContext(UserContext)
   const router = useRouter()
   useEffect(() => {
     if (!(user || loading)) {
@@ -160,10 +161,9 @@ export default function Contact({flag}) {
       let { error:error2 } = await supabase.from('comments').update({user_username:username}).eq('user_id',user.id)
       if (error) throw error
       alert('Profile updated!')
-      setUsername(username)
       getProfile()
       getComments(user.id)
-      router.push("/profile")
+      router.push("/Login")
 
     } catch (error) {
       console.log(error)
