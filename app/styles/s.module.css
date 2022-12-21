@@ -93,3 +93,6 @@ line-height: 1.2;
 }
 
 
+.dark {
+  @apply bg-gray-800 text-zinc-50
+}

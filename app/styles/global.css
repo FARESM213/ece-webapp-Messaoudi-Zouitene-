@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-white {
+    background-color: white;
+  }
+}
+
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
@@ -33,6 +40,147 @@ background-color: rgba(97, 106, 116, 1)
 .header-right {
 @apply float-right p-5
 }
+
+
+.dark {
+  @apply bg-gray-800 text-zinc-50
+}
+
+
+.header2 {
+  @apply overflow-hidden bg-gray-200;
+  @apply bg-gray-700 text-zinc-50
+  }
+  
+  .header2 a {
+  @apply float-left text-zinc-50 text-center p-3 no-underline text-lg leading-6 rounded
+  }
+  
+  .header2 a.logo {
+  @apply text-2xl font-bold;
+  font-weight: bold;
+  }
+  
+  .header2 a.hover{
+  @apply text-white
+  }
+  
+  
+  .header2 a.active {
+  @apply bg-gray-700 text-white;
+  @apply bg-gray-800 text-zinc-50
+  }
+  
+  .header2-right {
+  @apply float-right p-5
+  
+  }
+
+
+
+.orange {
+  @apply bg-orange-400 text-zinc-50
+}
+
+.header3 {
+  @apply overflow-hidden bg-gray-200;
+  @apply bg-neutral-900 text-neutral-900
+  }
+  
+  .header3 a {
+  @apply float-left text-neutral-900 text-center p-3 no-underline text-lg leading-6 rounded
+  }
+  
+  .header3 a.logo {
+  @apply text-2xl font-bold;
+  font-weight: bold;
+  }
+  
+  .header3 a.hover{
+  @apply text-neutral-900
+  }
+  
+  .header3 a.active {
+  @apply bg-gray-800 text-neutral-900
+  }
+  
+  .header3-right {
+  @apply float-right p-5
+  
+  }
+
+
+.blue {
+  @apply bg-blue-500 text-zinc-50
+}
+
+
+.header4 {
+  @apply overflow-hidden bg-gray-200;
+  @apply bg-gray-700 text-zinc-50
+  }
+  
+  .header4 a {
+  @apply float-left text-zinc-50 text-center p-3 no-underline text-lg leading-6 rounded
+  }
+  
+  .header4 a.logo {
+  @apply text-2xl font-bold;
+  font-weight: bold;
+  }
+  
+  .header4 a.hover{
+  @apply text-white
+  }
+  
+  
+  .header4 a.active {
+  @apply bg-gray-700 text-white;
+  @apply bg-gray-800 text-zinc-50
+  }
+  
+  .header4-right {
+  @apply float-right p-5
+  
+  }
+
+
+
+
+
+.green {
+  @apply bg-emerald-500 text-zinc-50
+}
+
+.header5 {
+  @apply overflow-hidden bg-gray-200;
+  @apply bg-gray-700 text-zinc-50
+  }
+  
+  .header5 a {
+  @apply float-left text-zinc-50 text-center p-3 no-underline text-lg leading-6 rounded
+  }
+  
+  .header5 a.logo {
+  @apply text-2xl font-bold;
+  font-weight: bold;
+  }
+  
+  .header5 a.hover{
+  @apply text-white
+  }
+  
+  
+  .header5 a.active {
+  @apply bg-gray-700 text-white;
+  @apply bg-gray-800 text-zinc-50
+  }
+  
+  .header5-right {
+  @apply float-right p-5
+  
+  }
+
 
 
 

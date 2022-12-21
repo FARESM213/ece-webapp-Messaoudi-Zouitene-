@@ -1,17 +1,18 @@
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import { useState } from 'react'
 
 export default function Home() {
+  const [darkMode, setDarkMode] =useState()
   return (
 
     <div className="py-10 min-h-screen max-w-full md:max-w-4xl md:mx-auto">
-
-    <div className={styles.container}>
-      
+      <div className={styles.container}>
       <main className={styles.main} >
         
       
         <h1 className={styles.title}>
-          <img src="lol.png" width="400" length="400" alt="amerique image"/>
+          <img src={darkMode?"lol2.jpg":"lol2.png"} width="500" length="500" alt="amerique image"/>
         </h1>
         
         <div className={styles.description}>
@@ -21,25 +22,51 @@ export default function Home() {
         </div>  
 
       <div className={styles.grid}>
-        <a href="/America" className={styles.card}>
+
+        <a className={styles.card} href="">
+        
+          <Link href="/Continent/Amerique">
+          <div>
             <h2>America</h2>
             <img src="amerique.png" width="400" length="400" alt="amerique image"/>
-          </a>
+          </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Africa</h2>
-            <img src="afrique.png" width="400"  length="400"  alt="afrique image"/>
-          </a>
+          </Link>
+        </a>
 
-          <a href="https://github.com/vercel/next.js/tree/canary/examples" className={styles.card}>
-            <h2>Asia</h2>
+        <a className={styles.card} href="" >
+        <Link href="/Continent/Afrique" >
+                    <div>
+                <h2>Africa</h2>
+                    <img src="afrique.png" width="400"  length="400"  alt="afrique image"/>
+
+                    </div>
+            
+        </Link>
+        </a>
+        <a className={styles.card} href="">
+             <Link href="/Continent/Asie">
+            <div>
+                          <h2>Asia</h2>
             <img src="asiii2.png" width="400" length="400" alt="asia image"/>
-          </a>
+            </div>
 
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Europe</h2>
-            <img src="europe12.png" width="400" length="400" alt="europe image"/>
+          </Link>
           </a>
+          <a className={styles.card} href="">
+              <Link href="/Continent/Europe">
+                <div>
+                    <h2>Europe</h2>
+                    <img src="europe12.png" width="400" length="400" alt="europe image"/>
+                </div>
+              </Link>
+        </a>
+
+    
+         
+
+       
+
 
         </div>
       </main>

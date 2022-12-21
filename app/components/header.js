@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import SignedIn from './SignedIn'
 import UserContext from './UserContext'
 
-export default function Header() {
+export default function Header(props) {
 
   const { user, logout, loading } = useContext(UserContext)
 
@@ -12,19 +12,19 @@ export default function Header() {
 
     return (
       <header>
-          <div className="header">
-          <SignedIn/>  
+      <div className={props.darkMode ?"header2":"header"} >
+      <SignedIn/>  
+        <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
+          <div className={props.darkMode ?"header2-right":"header-right"}>
+              <img onClick={props.toggleDarkMode} className="self-left justify-self-end" src={props.darkMode ? "../ON.png" : "../OFF.png"} width="100" height={"50"} />
 
-          <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
-          <div className="header-right">  
-          <Link className="active" href="/" >Home </Link>   
-          <Link className="active" href="/profile" >Profile </Link>
-          <Link href="/equipe">Equipes</Link>
+              <Link className="active" href="/" >Home </Link>
+              <Link className="active" href="/profile" >Profile </Link>
+              <Link href="/equipe">Equipes</Link>
 
-          <Link href="/contacts">Contact</Link>
-          <Link href="/AjouterPays">About Us</Link>
+              <Link href="/contacts">Contact</Link>
           </div>
-          </div> 
+      </div> 
       </header>
     )
 
@@ -34,20 +34,21 @@ export default function Header() {
 
     return (
       <header>
-          <div className="header">
+          <div className={props.darkMode ?"header2":props.orangeMode?"header3":props.greenMode?"header4":props.blueMode?"header5":"header"}>
+          <pre >Aucun utilisateur connecté </pre>
+            <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
+              <div className={props.darkMode ?"header2-right":"header-right"}>
+                  <img onClick={props.toggleDarkMode} className="self-left justify-self-end" src={props.darkMode ? "../ON.png" : "../OFF.png"} width="100" height={"50"} />
+                  <img onClick={props.toggleOrangeMode} className="self-left justify-self-end" src={props.orangeMode ? "../ON.png" : "../OFF.png"} width="100" height={"50"} />
+                  <img onClick={props.toggleGreenMode} className="self-left justify-self-end" src={props.greenMode ? "../ON.png" : "../OFF.png"} width="100" height={"50"} />
+                  <img onClick={props.toogleBlueMode} className="self-left justify-self-end" src={props.blueMode ? "../ON.png" : "../OFF.png"} width="100" height={"50"} />
 
-          <pre>Aucun utilisateur connecté </pre>
-          <a  className="logo" > <img src="../logoooo.png" width="200" ></img></a>
-          <div className="header-right">
-            
-          <Link className="active" href="/" >Home </Link>
-          <Link className="active" href="/Login" >Login </Link>
-          <Link href="/equipe">Equipes</Link>
+                  <Link className="active" href="/" >Home </Link>
+                  <Link className="active" href="/Login" >Login </Link>
+                  <Link href="/equipe">Equipes</Link>
 
-          <Link href="/contacts">Contact</Link>
-
-          <Link href="/AjouterPays">About Us</Link>
-          </div>
+                  <Link href="/contacts">Contact</Link>
+              </div>
           </div> 
       </header>
     )
