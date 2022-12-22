@@ -7,10 +7,20 @@ import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 const supabase=getServiceSupabase();
 
+function toggleTheme() {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }
+  
+
+
+
 
 export default function Profile({ equipe }) {
 
-  const { user, logout, loading } = useContext(UserContext)
 
   const [data, setData] = useState()
   const router = useRouter()
@@ -18,6 +28,7 @@ export default function Profile({ equipe }) {
   const compo = ['3-1-4-2', '3-4-1-2', '3-4-2-1','3-4-3','3-5-1-1','3-5-2','4-1-2-1-2','4-1-3-2' ,'4-1-4-1','4-2-2-2','4-2-3-1','4-2-4','4-3-1-2','4-3-2-1','4-3-3','4-4-1-1','4-4-2','4-5-1','5-2-1-2','5-2-2-1','5-2-3','5-3-2','5-4-1'];
   const continent = ['Amérique', 'Asie', 'Afrique', 'Europe'];
   async function handleSubmit(event) {
+     
       
       event.preventDefault();
       const equipe = event.target.name.value;   
@@ -60,6 +71,8 @@ export default function Profile({ equipe }) {
     
     }
             return (
+                
+              
 
                 <>
                  <Head>

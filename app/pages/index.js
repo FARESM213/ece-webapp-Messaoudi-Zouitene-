@@ -22,9 +22,9 @@ export default function Home() {
         </h1>
         
         <div className={styles.description}>
-        <p className={styles.card}>
+       
          <strong>Choose your continent and Find which teams have qualified for Qatar tournament ! </strong> 
-        </p>
+    
         </div>  
 
       <div className={styles.grid}>
