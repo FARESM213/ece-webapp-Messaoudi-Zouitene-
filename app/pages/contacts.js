@@ -1,34 +1,46 @@
+import styles from '../styles/Home.module.css'
+
+
 export default function contacts() {
   return (
-    <div >
-      <main >
-        <h1>
-        Contacts
-        </h1>
-        <br></br>
+        <div className={styles.divvv}>
 
-        <div >
-         
-           <div>
-            <h2>Messaoudi Fares &rarr;</h2>
-            <ul>
-            <li>Telephone : 07 83 25 75 42</li>
-            <li>Adresse : 98 rue de porte morte </li>
-            <li>Email : Fares.Messaoudi@edu.ece.fr</li>
-            </ul>
-            </div>
+    <form className={styles.addteamform2} >
+      
+          <label htmlFor="name">Nom  :</label>
+          <input type="text" id="name"  name="name" value="Farès Messaoudi"  />
+        
+          <br />
+          <label htmlFor="name">Position  :</label>
+          <input type="text" id="Position" name="Position" value="Co-fondateur"  />
+          <br />
+          <label htmlFor="name">Num  :</label>
+          <input type="text" id="Num" name="Num" value="06-25-65-95-32"  />
+          <label> Bio :
+            <textarea name="bio">Ouais ouais l'équipe.</textarea>
+          </label>
+    </form>
+    <img src="hand.png" alt="Description de l'image"  width="600"/>
+        <form className={styles.addteamform2} >
+          <label htmlFor="name">Nom  :</label>
+          <input type="text" id="name"  name="name" value="Lydia Zouitene"  />
+        
+          <br />
+          <label htmlFor="name">Position  :</label>
+          <input type="text" id="Position" name="Position" value="Co-fondatrice"  />
+          <br />
+          <label htmlFor="name">Num  :</label>
+          <input type="text" id="Num" name="Num" value="06-65-26-47-30"  />
+          <label> Bio :
+            <textarea name="bio">Ouais ouais la team.</textarea>
+          </label>
+          
+        </form>
 
-           <div>
-            <h2>Lydia Zouitene &rarr;</h2>
-           <ul>
-            <li>Telephone : 07 34 53 13 75 </li>
-            <li>Adresse : 109 rue de l'imaginaire</li>
-            <li>Email : Lydia.Zouitene@edu.ece.fr</li>
-            </ul>
-          </div>          
-        </div>
-      </main>
-
+        
     </div>
+
+
+    
   )
 }
