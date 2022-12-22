@@ -12,7 +12,7 @@ export function UserContextProvider({
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
   const [darkMode, setDarkMode] =useState(true)
-  
+
   function toggleDarkMode() {
     setDarkMode(prevDarkMode => !prevDarkMode)
 }

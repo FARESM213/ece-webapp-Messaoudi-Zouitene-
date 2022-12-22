@@ -1,13 +1,11 @@
 
 import Header from './header.js'
 import Footer from './footer.js'
-
 import { useState } from 'react'
-
 
 export default function Layout({children}){
 
-  const [darkMode, setDarkMode] =useState(false)
+  const [darkMode, setDarkMode] =useState()
   const [orangeMode,setOrangeMode]=useState(false)
   const [greenMode,setGreenMode]=useState(false)
   const [blueMode,setBlueMode]=useState(false)
@@ -64,10 +62,14 @@ export default function Layout({children}){
         toggleGreenMode={toggleGreenMode}  
         toogleBlueMode={toogleBlueMode}  
     />
-      <main>
+      <main className='main'>
       {children}
       </main>
-      <Footer />
+      <Footer  darkMode={darkMode} 
+        orangeMode={orangeMode} 
+        greenMode={greenMode} 
+        blueMode={blueMode} 
+        />
     </div>
   )
 }

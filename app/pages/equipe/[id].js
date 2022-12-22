@@ -5,6 +5,7 @@ import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
 import MD5 from 'crypto-js/md5';
+import Head from 'next/head'
 
 const supabase=getServiceSupabase();
 
@@ -109,7 +110,7 @@ export default function Profile({ equipe,comment,flag}) {
                     <label>Nom en anglais</label>
                     <p type="text" id="equipe" name="equipe"> {equipe.flag}  </p> <br/>
 
-                    <label>Liste des joueurs</label>
+                    <label>Capitaine</label>
                     <p type="text" id="equipe" name="equipe">  {equipe.Liste_joueurs} </p> <br/>
 
                     <label>Composition</label>

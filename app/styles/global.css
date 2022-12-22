@@ -9,10 +9,40 @@
   }
 }
 
+.main
+{
+  min-height: 78.7vh;
+  flex-direction: column;
+}
+
 .wt-title {
   @apply text-3xl font-bold underline mb-10;
 }
 
+.changement
+{
+  margin-left: 40%;
+  position: absolute;
+  padding: 1%;
+}
+
+.header img{
+  display:inline-block;
+  margin: auto;
+  padding: 3px;
+}
+.header2 img{
+  display: inline;
+}
+.header3 img{
+  display: inline;
+}
+.header4 img{
+  display: inline;
+}
+.header5 img{
+  display: inline;
+}
 .header {
 @apply overflow-hidden bg-gray-200;
 background-color: rgba(241, 241, 241, 1)
@@ -76,38 +106,38 @@ background-color: rgba(97, 106, 116, 1)
   
   }
 
-
-
 .orange {
   @apply bg-orange-400 text-zinc-50
 }
 
 .header3 {
   @apply overflow-hidden bg-gray-200;
-  @apply bg-neutral-900 text-neutral-900
+  @apply bg-neutral-900 text-zinc-50
   }
   
-  .header3 a {
-  @apply float-left text-neutral-900 text-center p-3 no-underline text-lg leading-6 rounded
-  }
-  
-  .header3 a.logo {
-  @apply text-2xl font-bold;
-  font-weight: bold;
-  }
-  
-  .header3 a.hover{
-  @apply text-neutral-900
-  }
-  
-  .header3 a.active {
-  @apply bg-gray-800 text-neutral-900
-  }
-  
-  .header3-right {
-  @apply float-right p-5
-  
-  }
+.header3 a {
+@apply float-left text-zinc-50 text-center p-3 no-underline text-lg leading-6 rounded
+}
+
+.header3 a.logo {
+@apply text-2xl font-bold;
+font-weight: bold;
+}
+
+.header3 a.hover{
+@apply text-white
+}
+
+
+.header3 a.active {
+@apply bg-gray-700 text-white;
+@apply bg-gray-800 text-zinc-50
+}
+
+.header3-right {
+@apply float-right p-5
+
+}
 
 
 .blue {
@@ -180,7 +210,3 @@ background-color: rgba(97, 106, 116, 1)
   @apply float-right p-5
   
   }
-
-
-
-
