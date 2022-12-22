@@ -66,7 +66,7 @@ export default function Comments({com,flag}) {
                   <input type="text" id="comm" name="comm" placeholder="Modifiez votre commentaire sur l'equipe" required /> <br/>
                   
                       
-                            <div className={styles.card2}  key={com.id}>            
+                            <div className='card2' key={com.id}>            
                             <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(com.equipe_nom,flag)+".jpg"} width="50" length="50" /> 
 
                             <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  

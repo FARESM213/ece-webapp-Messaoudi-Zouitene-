@@ -19,6 +19,10 @@
 @apply text-blue-600 no-underline
 
 }
+.code
+{
+  @apply text-neutral-900
+}
 
 
 .title a:active

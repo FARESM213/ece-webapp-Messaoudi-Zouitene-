@@ -97,7 +97,7 @@ const equipe = ({flag,nom}) => {
         <div className={styles.grid}>
   
           {equipes.map(equipe => (
-            <div className={styles.card}  key={equipe.id}>
+            <div className='card' key={equipe.id}>
 
               <a href=''>
               <Link href={'/equipe/'+ equipe.id}>

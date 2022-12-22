@@ -17,10 +17,10 @@ export default function contacts() {
           <label htmlFor="name">Num  :</label>
           <input type="text" id="Num" name="Num" value="06-25-65-95-32"  />
           <label> Bio :
-            <textarea name="bio">Ouais ouais l'équipe.</textarea>
+            <input name="bio" value="Ouais ouais l'équipe."></input>
           </label>
     </form>
-    <img src="hand.png" alt="Description de l'image"  width="600"/>
+    <img src="hand.png" alt="Description de l'image"  width="600" height="100"/>
         <form className={styles.addteamform2} >
           <label htmlFor="name">Nom  :</label>
           <input type="text" id="name"  name="name" value="Lydia Zouitene"  />
@@ -32,7 +32,7 @@ export default function contacts() {
           <label htmlFor="name">Num  :</label>
           <input type="text" id="Num" name="Num" value="06-65-26-47-30"  />
           <label> Bio :
-            <textarea name="bio">Ouais ouais la team.</textarea>
+            <input name="bio" value="Ouais ouais la team."></input>
           </label>
           
         </form>

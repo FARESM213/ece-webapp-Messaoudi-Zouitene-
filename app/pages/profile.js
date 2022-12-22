@@ -55,7 +55,27 @@ export default function Contact({flag}) {
 
   useEffect(() => {
     getProfile()
+    loadData()
+
   }, [session])
+
+  async function loadData() {
+    if(user) {
+       console.log("in 1st if")
+       const { data, error } = await supabase
+       .from('profiles')
+       .select('email')
+       .eq('id',user.id)
+       .single()
+       if(error) throw error
+       if(!data.email) {
+          await supabase
+          .from('profiles')
+          .update({email:user.email})
+          .eq('id', session.user.id)
+       }
+    }
+ }
 
   async function getProfile() {
     try {
@@ -173,11 +193,9 @@ export default function Contact({flag}) {
   }
 
   async function Delete2(id) {
-              
     const { error } = await supabase.from('comments').delete().eq('id', id)
     alert('Commentaire supprimé')
     getComments(user.id)
-
     router.push('/profile')
 }
 
@@ -264,7 +282,7 @@ async function Update(id) {
                         <div className={styles.scroll2}>
 
                                 {user_comments ? user_comments.map(com => (
-                                                                      <div className={styles.card2}  key={com.id}>            
+                                                                      <div className="card2" key={com.id}>            
                                                                        <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(com.equipe_nom,flag)+".jpg"} width="50" length="50" /> 
                
                                                                        <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
@@ -297,7 +315,7 @@ async function Update(id) {
                                         
                             <div className={styles.scroll2}>
                                     {user_teams ? user_teams.map(equipe => (
-                                              <div className={styles.card2} key={equipe.id}>
+                                              <div className="card2"key={equipe.id}>
                                                       <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
                                                       <h2><Link href={"/equipe/"+equipe.id}>Detail de l'equipe</Link></h2> 
                                                           <h5 type="equipe">Nom : {equipe.nom}</h5>
