@@ -18,7 +18,7 @@ export const getServerSideProps =async ({params})=>{
 }
 
 
-const equipe = ({flag,nom}) => {
+const Continent = ({flag,nom}) => {
 
   const supabaseClient = useSupabaseClient()
   const [equipes, setEquipe] = useState(null)
@@ -30,7 +30,7 @@ const equipe = ({flag,nom}) => {
         setEquipe(equipes)
     }
     FetchEquipes()
-  }, [])
+  })
 
   function Loadflag(name,flag)
   {  
@@ -126,4 +126,4 @@ const equipe = ({flag,nom}) => {
 
 }
 
-export default equipe;
+export default Continent;

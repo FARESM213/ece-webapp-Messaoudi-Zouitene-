@@ -15,7 +15,7 @@ export default function SignedIn() {
 
   useEffect(() => {
     getProfile()
-  }, [session])
+  },)
 
   async function getProfile() {
     try {

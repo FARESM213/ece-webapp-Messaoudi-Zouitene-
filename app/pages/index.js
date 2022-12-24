@@ -75,7 +75,7 @@ export default function Home() {
       <div className={styles.description}>
           Get to know more about us ! 
                         <a className='card' href="">
-                            <Link href="/about">            
+                            <Link href="/contacts">            
                                     <code className={styles.code}>click here </code>             
                             </Link>
                         </a>

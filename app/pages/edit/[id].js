@@ -95,7 +95,7 @@ export default function Profile({ equipe,comment }) {
 
             <div className={styles.teamdata} >
               
-                    <label>Nom de l'équipe</label>
+                    <label>Nom de l&apos;équipe</label>
                     <input type={darkMode?"categorie2":"text"} id="equipe" name="equipe" required defaultValue={equipe.nom|| ''}/> <br/>
                     <label>Coach</label>
                     <input type="text" id="Entraineur" name="Entraineur" required defaultValue={equipe.coach|| ''}/> <br/>

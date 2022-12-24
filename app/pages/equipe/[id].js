@@ -107,7 +107,7 @@ export default function Profile({ equipe, comment, flag }) {
 
           <img src={"https://flagcdn.com/w2560/" + Loadflag(equipe.nom, flag) + ".jpg"} width="100" height="100"></img>
 
-          <label>Nom de l'équipe</label>
+          <label>Nom de l&apos;équipe</label>
           <p type="text" id="equipe" name="equipe" >  {equipe.nom}</p> <br />
           <label>Coach</label>
           <p type="text" id="equipe" name="equipe"> {equipe.coach}  </p><br />

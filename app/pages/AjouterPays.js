@@ -82,7 +82,7 @@ export default function Ajout({ equipe }) {
                        
                         <form className={styles.addteamform} onSubmit={handleSubmit} >
 
-                            <label htmlFor="name">Nom de l'équipe :</label>
+                            {<label htmlFor="name">Nom de l&apos;équipe :</label>}                            
                             <input type="text" id="name" name="name" required />
                             <label htmlFor="Coatch">Coach :</label>
                             <input type="text" id="Coatch" name="Coatch" required />
@@ -103,7 +103,7 @@ export default function Ajout({ equipe }) {
                                 ))}
                             </select>
 
-                            <button type="submit">Ajouter l'équipe</button>
+                            {<button type="submit">Ajouter l&apos;équipe</button>}
                     </form>
             </div>
                 

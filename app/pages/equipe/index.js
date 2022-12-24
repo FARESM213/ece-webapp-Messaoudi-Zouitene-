@@ -15,7 +15,7 @@ export const getStaticProps =async ()=>{
 }
 
 
-const equipe = ({flag}) => {
+const Equipe = ({flag}) => {
 
   const supabaseClient = useSupabaseClient()
   const [equipes, setEquipe] = useState(null)
@@ -27,7 +27,7 @@ const equipe = ({flag}) => {
         setEquipe(equipes)
     }
     FetchEquipes()
-  }, [])
+  })
   
   function Loadflag(name,flag)
   {  
@@ -118,4 +118,4 @@ const equipe = ({flag}) => {
   }
 }
 
-export default equipe;
+export default Equipe;

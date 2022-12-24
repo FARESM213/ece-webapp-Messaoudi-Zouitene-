@@ -18,16 +18,6 @@ export const getStaticProps =async ()=>{
   }
 }
 
-function getBase64Image(img) {
-  var canvas = document.createElement("canvas");
-  canvas.width = img.width;
-  canvas.height = img.height;
-  var ctx = canvas.getContext("2d");
-  ctx.drawImage(img, 0, 0);
-  var dataURL = canvas.toDataURL("image/png");
-  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
 
 export default function Contact({flag}) {
 
@@ -56,7 +46,7 @@ export default function Contact({flag}) {
     getProfile()
     loadData()
 
-  }, [session])
+  })
 
   async function loadData() {
     if(user) {
@@ -105,37 +95,6 @@ export default function Contact({flag}) {
     }
 
   }
-
-  async function sameImages(mail) {
-    const session = useSession()
-    const a = new Image()
-    a.crossOrigin="anonymous"
-    const b = new Image()
-    b.crossOrigin="anonymous"
-    a.src = 'https://www.gravatar.com/avatar/' + MD5(mail)
-    b.src = 'https://www.gravatar.com/avatar/'
-  
-    // might need to wait until a and b have actually loaded, ignoring this for now
-    const a_base64 = getBase64Image(a)
-    const b_base64 = getBase64Image(b)
-    var c = "" 
-  
-  
-    if (a_base64 === b_base64) 
-    {
-      c='https://www.gravatar.com/avatar/78fd7fd27f60bc9dd10d42c293a2f71a '
-    }
-    else 
-    {
-        c ='https://www.gravatar.com/avatar/' + MD5(mail)
-    }
-
-    console.log(c)
-    
-    return c.toString 
-  }
-
-  
 
   function Loadflag(name,flag)
   {  
@@ -316,7 +275,7 @@ async function Update(id) {
                                     {user_teams ? user_teams.map(equipe => (
                                               <div className="card2"key={equipe.id}>
                                                       <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(equipe.nom,flag)+".jpg"} width="50" length="50" />  
-                                                      <h2><Link href={"/equipe/"+equipe.id}>Detail de l'equipe</Link></h2> 
+                                                      <h2><Link href={"/equipe/"+equipe.id}>Detail de l&apos;equipe</Link></h2> 
                                                           <h5 type="equipe">Nom : {equipe.nom}</h5>
                                                           <h5 type="equipe">Coach : {equipe.coach}   </h5>     
 
