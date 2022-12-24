@@ -19,6 +19,7 @@ const Equipe = ({flag}) => {
 
   const supabaseClient = useSupabaseClient()
   const [equipes, setEquipe] = useState(null)
+  //test
   
   useEffect(() => {
     async function FetchEquipes() 
