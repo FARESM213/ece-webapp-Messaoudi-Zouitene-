@@ -7,7 +7,6 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import MD5 from 'crypto-js/md5';
 import Link from 'next/link'
-import { useUser } from 'supabase-comments-extension'
 
 export const getStaticProps =async ()=>{
   const res= await fetch("https://flagcdn.com/fr/codes.json")
@@ -288,7 +287,7 @@ async function Update(id) {
                                                                        <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
                                                                         <h1 >{com.user_username} : </h1>
 
-                                                                        <p type="p1"> {com.content}    </p> 
+                                                                        <p type="p1"> <a>{com.content}  </a>  </p> 
                                                                                 { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 " onClick={async()=>Delete2(com.id)} > Delete </button>):<></>}
                                                                                 { com.user_id==user.id?(<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 "onClick={async()=>Update2(com.id)} >Edit</button>):<></>}
                                                                     

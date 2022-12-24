@@ -24,7 +24,6 @@ return {
 
 export default function Comments({com,flag}) {
   const { user, username,logout, loading } = useContext(UserContext)
-  const [data, setData] = useState()
   const router = useRouter()
 
   function Loadflag(name,flag)
@@ -42,9 +41,17 @@ export default function Comments({com,flag}) {
   async function Update(id) {
 
       const commentaires =document.getElementById("comm").value;
-      const { error } = await supabase.from('comments').update({content:commentaires,updated_at: new Date().toISOString()}).eq("id",id)  
+
+      if(commentaires==="")
+      {
+        alert("Le commentaire semble vide...")
+      }
+      else
+      {
+              const { error } = await supabase.from('comments').update({content:commentaires,updated_at: new Date().toISOString()}).eq("id",id)  
       alert("Commentaire modifié ! ")
       router.push("/comments/"+id)
+      }
   }
     
     return (

@@ -83,10 +83,20 @@ export default function Profile({ equipe, comment, flag }) {
   async function insert(id) {
 
     const commentaires = document.getElementById("comm").value;
-    const { data, error: error2 } = await supabase.from('profiles').select("username").eq("id", user.id).single()
-    const { data: data2, error: error3 } = await supabase.from('equipe').select("nom").eq("id", id).single()
-    const { error } = await supabase.from('comments').insert({ equipe_id: id, user_id: user.id, content: commentaires, user_email: user.email, user_username: data.username, equipe_nom: data2.nom, updated_at: new Date().toISOString() })
-    router.push('/equipe/' + equipe.id)
+    
+
+    if(commentaires==="")
+    {
+      alert("Le commentaire semble vide ...")
+    }
+    else
+    {
+        const { data, error: error2 } = await supabase.from('profiles').select("username").eq("id", user.id).single()
+        const { data: data2, error: error3 } = await supabase.from('equipe').select("nom").eq("id", id).single()
+        const { error } = await supabase.from('comments').insert({ equipe_id: id, user_id: user.id, content: commentaires, user_email: user.email, user_username: data.username, equipe_nom: data2.nom, updated_at: new Date().toISOString() })
+        router.push('/equipe/' + equipe.id)
+    }
+ 
   }
 
   return (
