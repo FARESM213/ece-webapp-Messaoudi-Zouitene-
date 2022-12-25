@@ -218,7 +218,7 @@ async function Update(id) {
                   
                   <div>
                     <label htmlFor="username">Username</label>
-                    <input id="username" type="text" defaultValue={equipe.username|| ''} onChange={(e) => setUsername(e.target.value)}/>
+                    <input id="username" type="text" defaultValue={username|| ''} onChange={(e) => setUsername(e.target.value)}/>
                   </div>
 
                   <div>
