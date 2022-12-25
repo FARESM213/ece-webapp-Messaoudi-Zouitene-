@@ -46,11 +46,10 @@ export default function Contact({flag}) {
     getProfile()
     loadData()
 
-  })
+  },[session])
 
   async function loadData() {
     if(user) {
-       console.log("in 1st if")
        const { data, error } = await supabase
        .from('profiles')
        .select('email')
@@ -139,7 +138,7 @@ export default function Contact({flag}) {
       let { error:error2 } = await supabase.from('comments').update({user_username:username}).eq('user_id',user.id)
       if (error) throw error
       alert('Profile updated!')
-      getProfile()
+      //getProfile()
       getComments(user.id)
       router.push("/Login")
 
@@ -206,7 +205,7 @@ async function Update(id) {
                 <div className="form-widget">
 
                 <div>
-                    <label htmlFor="website">Profil Image</label>
+                    <label htmlFor="website">Profil Image</label> <br/>
                     <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(user.email)} width="100" length="100" />  
                 </div>
                 <br/>
