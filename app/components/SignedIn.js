@@ -38,7 +38,6 @@ export default function SignedIn() {
       }
     } catch (error) {
    //   alert('Error loading user data!')
-      console.log(error)
     } finally {
       setLoading(false)
     }

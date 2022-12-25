@@ -50,7 +50,6 @@ export default function Contact({flag}) {
 
   async function loadData() {
     if(user) {
-       console.log("in 1st if")
        const { data, error } = await supabase
        .from('profiles')
        .select('email')
@@ -144,7 +143,6 @@ export default function Contact({flag}) {
       router.push("/Login")
 
     } catch (error) {
-      console.log(error)
     } finally {
       setLoading(false)
     }
