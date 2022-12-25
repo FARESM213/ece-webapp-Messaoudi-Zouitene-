@@ -50,6 +50,7 @@ export default function Contact({flag}) {
 
   async function loadData() {
     if(user) {
+       console.log("in 1st if")
        const { data, error } = await supabase
        .from('profiles')
        .select('email')
@@ -143,6 +144,7 @@ export default function Contact({flag}) {
       router.push("/Login")
 
     } catch (error) {
+      console.log(error)
     } finally {
       setLoading(false)
     }
@@ -216,12 +218,12 @@ async function Update(id) {
                   
                   <div>
                     <label htmlFor="username">Username</label>
-                    <input id="username" type="text" defaultValue={username|| ''} onChange={(e) => setUsername(e.target.value)}/>
+                    <input id="username" type="text" value={username || ''} onChange={(e) => setUsername(e.target.value)}/>
                   </div>
 
                   <div>
                     <label htmlFor="website">Website</label>
-                    <input id="website" type="text" defaultValue={website || ''} onChange={(e) => setWebsite(e.target.value)}/>
+                    <input id="website" type="text" value={website || ''} onChange={(e) => setWebsite(e.target.value)}/>
                   </div>
                 </div>
                 <button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 "  onClick={onClickLogout} > Logout </button>
