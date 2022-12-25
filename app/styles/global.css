@@ -259,6 +259,8 @@ font-weight: bold;
   text-align: center;
   height: fit-content;
   max-width: 400ch;
+  margin-right: 15%;
+  margin-left: 25%;
 
 }
 
@@ -268,6 +270,8 @@ font-weight: bold;
   text-align: center;
   margin-top: -15%;
   margin-bottom: 12%;
+  margin-left:25%;
+  margin-right: 15%;
 
 }
 
