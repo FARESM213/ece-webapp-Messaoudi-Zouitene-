@@ -78,7 +78,6 @@ export default function Comments({com,flag}) {
 
                             <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(com.user_email)} width="100" length="100" />  
                             <h1 >{com.user_username} : </h1>
-
                             <p type="p2"> {com.content} </p>
                                 
                             <h6> {"Le "+new Date(com.updated_at).getDate()+"-"+(new Date(com.updated_at).getMonth()+1)+"-"+new Date(com.updated_at).getFullYear()+" à "+new Date(com.updated_at).getHours()+"h"+new Date(com.updated_at).getMinutes()} </h6> 

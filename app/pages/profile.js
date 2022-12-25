@@ -205,7 +205,7 @@ async function Update(id) {
                 <div className="form-widget">
 
                 <div>
-                    <label htmlFor="website">Profil Image</label> <br/>
+                    <label htmlFor="website">Profil Image</label> <br/> <br/>
                     <img className={styles.round} src={"https://www.gravatar.com/avatar/"+MD5(user.email)} width="100" length="100" />  
                 </div>
                 <br/>
@@ -225,8 +225,18 @@ async function Update(id) {
                     <input id="website" type="text" value={website || ''} onChange={(e) => setWebsite(e.target.value)}/>
                   </div>
                 </div>
-                <button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 "  onClick={onClickLogout} > Logout </button>
-                <button className="rounded px-5 py-3 text-white bg-green-500 hover:bg-green-300" onClick={async() => updateProfile({ username, website, avatar_url })} disabled={loading} > {loading ? 'Loading ...' : 'Update'}</button>        
+                <table>
+                          <tbody>
+                            <tr>      
+                                <th>
+                                <button className="rounded px-5 py-3 text-white bg-red-500 hover:bg-red-300 "  onClick={onClickLogout} > Logout </button>
+                                </th>
+                                <th>
+                                <button className="rounded px-5 py-3 text-white bg-green-500 hover:bg-green-300" onClick={async() => updateProfile({ username, website, avatar_url })} disabled={loading} > {loading ? 'Loading ...' : 'Update'}</button>        
+                                </th>
+                            </tr>
+                          </tbody>         
+                        </table>
             </div>
 
 
