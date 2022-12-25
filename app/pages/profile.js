@@ -22,7 +22,7 @@ export const getStaticProps =async ()=>{
 export default function Contact({flag}) {
 
   const session= useSession()
-  const { user, logout, loading,teams,comments,update} = useContext(UserContext)
+  const { user, logout, loading} = useContext(UserContext)
   const router = useRouter()
   useEffect(() => {
     if (!(user || loading)) {
@@ -218,7 +218,7 @@ async function Update(id) {
                   
                   <div>
                     <label htmlFor="username">Username</label>
-                    <input id="username" type="text" value={username || ''} onChange={(e) => setUsername(e.target.value)}/>
+                    <input id="username" type="text" value={username || ''} />
                   </div>
 
                   <div>

@@ -7,17 +7,8 @@ import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 const supabase=getServiceSupabase();
 
-function toggleTheme() {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  }
   
-
-
-export default function Ajout({ equipe }) {
+export default function Ajout() {
 
   const router = useRouter()
   const { user} = useContext(UserContext)

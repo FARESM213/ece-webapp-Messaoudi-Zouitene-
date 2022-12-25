@@ -28,8 +28,6 @@ export default function Profile({ equipe, comment, flag }) {
   const { user, username, logout, loading } = useContext(UserContext)
   const [data, setData] = useState()
   const router = useRouter()
-  const compo = ['3-1-4-2', '3-4-1-2', '3-4-2-1', '3-4-3', '3-5-1-1', '3-5-2', '4-1-2-1-2', '4-1-3-2', '4-1-4-1', '4-2-2-2', '4-2-3-1', '4-2-4', '4-3-1-2', '4-3-2-1', '4-3-3', '4-4-1-1', '4-4-2', '4-5-1', '5-2-1-2', '5-2-2-1', '5-2-3', '5-3-2', '5-4-1'];
-
   useEffect(() => {
     async function loadData() {
       setData(equipe)
@@ -37,22 +35,6 @@ export default function Profile({ equipe, comment, flag }) {
     loadData()
   })
 
-
-  async function getMD(id) {
-    const data = await supabase.from('profiles').select("email").eq('id', id).single()
-    if (data) {
-      alert(MD5(data.email))
-      return MD5("" + data.email)
-    }
-
-  }
-
-  async function Delete(id) {
-
-    const { error } = await supabase.from('equipe').delete().eq('id', id)
-    alert('Equipe supprimé')
-    router.push('/equipe')
-  }
   async function Delete2(id) {
 
     const { error } = await supabase.from('comments').delete().eq('id', id)
