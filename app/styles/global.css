@@ -264,6 +264,118 @@ font-weight: bold;
 
 }
 
+
+.dark .color label,
+.dark .color input
+{
+ color: azure; 
+}
+
+
+
+/* @apply bg-sky-300 text-neutral-800 */
+
+
+
+
+
+.blue .color input
+{
+  background-color:azure;
+  color:midnightblue;
+}
+.blue .color input::placeholder
+{
+  color:midnightblue;
+}
+
+.blue .color label
+{
+  color:rgb(36, 36, 36); 
+}
+
+.blue .color button
+{
+ @apply bg-zinc-200 text-neutral-900;
+}
+
+.blue .color button:hover
+{
+  color:azure;
+  background-color:#075985;
+}
+
+.blue .color a
+{
+  @apply  text-zinc-900;
+}
+
+
+
+
+
+
+
+
+.green .color input
+{
+  background-color:black;
+  background-color:rgb(157, 204, 138);
+}
+.green .color input::placeholder
+{
+  color:dimgray;
+}
+
+.green .color label
+{
+  color:rgb(36, 36, 36); 
+}
+
+.green .color button
+{
+  @apply bg-emerald-500 text-neutral-900;
+  background-color: rgb(218, 218, 189);
+}
+
+.green .color button:hover
+{
+  @apply  text-emerald-500;
+  background-color:rgb(74, 74, 74);
+}
+
+.green .color a
+{
+  @apply  text-zinc-500;
+}
+
+
+
+.orange .color input
+{
+  background-color: #ffedd5;
+  @apply text-neutral-900 
+}
+
+.orange .color label
+{
+  @apply  text-neutral-900
+}
+
+.orange .color button
+{
+  color: #ffedd5;
+  background-color:rgb(44, 43, 43);
+}
+
+.orange .color button:hover
+{
+  color: #ffedd5;
+  background-color:rgb(74, 74, 74);
+}
+
+
+
 .card2 p[type="p2"]{
   font-size: 1.2rem;
   line-height: 1.5;
