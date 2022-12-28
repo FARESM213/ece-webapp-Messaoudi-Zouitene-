@@ -52,7 +52,6 @@ export default function Profile({ equipe,comment }) {
         const fla =  document.getElementById("anglais").value;
         const players =  document.getElementById("joueurs").value;        
         
-        
         const continen = ""+document.querySelector('#continent').value;
         const compos = ""+document.querySelector('#Composition').value;
 

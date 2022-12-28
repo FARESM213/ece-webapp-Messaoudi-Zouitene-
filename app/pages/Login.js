@@ -6,6 +6,7 @@ import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import UserContext from '../components/UserContext'
 
 export default function Contact() {
+
   const { user } = useContext(UserContext)
   const router = useRouter()
   const supabaseClient = useSupabaseClient()
@@ -27,4 +28,5 @@ export default function Contact() {
        </div>
     </div>
   )
+  
 }

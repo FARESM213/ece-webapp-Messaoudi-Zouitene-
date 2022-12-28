@@ -54,3 +54,177 @@ Pour le systeme de routing plus avancé concernant la base de donne, nous vous f
 - name : Messaoudi Fares | email : Messaoudi.fares@edu.ece.fr
 
 
+
+# Blogging application - ECE Webtech project
+
+*presentation, introduction, ...*
+
+## Production 
+
+- Vercel URL: https://ece-webapp-messaoudi-zouitene.vercel.app/
+- Supabase project URL: https://lsmbmkrtvagrqakizced.supabase.co
+
+## Usage
+
+*how to start and use the application, run the tests, ...*
+
+* Clone this repository, from your local machine:
+  ```
+  git clone ...
+  cd ...
+  ```
+* Start the the application
+  ```bash
+  cd app
+  # Install dependencies (use yarn or npm)
+  npm install
+  npm run build
+  npm run dev 
+  ```
+* If you want to check if everythong is correctly built run : 
+```bash
+  npm run build
+```
+## Authors
+
+*name, email, ...*
+
+## Tasks
+  
+**Project management:**
+
+* Naming convention   
+ ![images](image/Convention)
+  Each Component or variable follows the react, html or css naming conventions. We can see for example the react functions begin with a lowercase.
+
+> **Graduation** The graduation estimation for this section is : 2/2
+
+* Project structure   
+
+  ![images](image/Tree)
+
+  Our Project is well organized with a an app folder divided in several subfolders: 
+
+    * [Component Folder](/app/components): Contain all the necessary components of the app such as [Header](/app/components/header.js) , [Footer](/app/components/footer.js) or even [UserContext](/app/components/UserContext.js)
+
+    * [Pages Folder](/app/pages/) : Contain all the different pages of our app such as [Login](/app/pages/Login.js) or [Equipe](/app/pages/equipe/)
+
+    * [Supabase Folder](/supabase/) : Contain all the necessary information to connect to [Supabase](/supabase/) locally ( or online)
+
+    * [Public Folder](/app/public/) : Contain all the different picture for our app 
+    
+    * [Style Folder](/app/styles/) : Contain all the different styles and css for each component 
+
+  > **Graduation** The graduation estimation for this section is : 2/2
+
+* Git   
+
+  ![Commit](image/Commit.png)
+
+  Throughout the project, we made regular commits, performed merges and managed conflicts after validation of each feature. We can then follow all our progress chronologically during these last months 
+
+  > **Graduation** The graduation estimation for this section is : 2/2
+
+* Code quality   
+
+  ![Commit](image/Indentation.png)
+
+  In order to evolve efficiently, we have taken the time to focus on indentation, function/variable explicitness and spacing of our code.
+
+  > **Graduation** The graduation estimation for this section is : 3/4
+
+  
+* Design, UX, and content   
+
+  ![Commit](image/Orange.png)
+
+  The proposed application has been designed to be as intuitive as possible and offer the user a pleasant experience. This starts with the choice of his favorite theme at any time (accessible through the header)
+
+  Our styles are implemented with Taildwind and classic css like on the following screen :
+
+  ![Commit](image/Styles.png)
+
+
+  > **Graduation** The graduation estimation for this section is : 3.5/4
+
+
+**Application development:**
+
+* Home page   
+
+  ![Commit](image/Acceuil.png)
+
+  Our home page offers a search of the teams according to their continent. Thus, you can consult the information of all the teams present at the tournament coming from America, Asia, Africa and Europe
+
+  ![Commit](image/Asie.png)
+
+  > **Graduation** The graduation estimation for this section is : 2/2
+
+* Login and profile page   
+
+  ![Login](image/Login.png)
+
+  The Login page allows the user to connect from his email address or his github account.It also offers to create an account if the user is not yet registered. He will then receive an email for the confirmation of his registration 
+  
+  ![Login](image/Mail.png)
+
+  Once logged in, the user will have a summary of all his comments and registered teams. He will then be able to make changes to all the information concerning him.
+  The modification of an information will be done in real time.
+
+  ![Login](image/profil.png)
+
+
+  > **Graduation** The graduation estimation for this section is : 4/4 (+bonus)
+
+* New articles creation   
+  *place your graduation and comments*
+* New comment creation   
+  *place your graduation and comments*
+* Resource access control   
+  *place your graduation and comments*
+* Article modification   
+  *place your graduation and comments*
+* Article removal   
+  *place your graduation and comments*
+* Comment modification   
+  *place your graduation and comments*
+* Comment removal   
+  *place your graduation and comments*
+* Account settings   
+  *place your graduation and comments*
+* WYSIWYG integration   
+  *place your graduation and comments*
+* Gravatar integration   
+  *place your graduation and comments*
+* Light/dark theme   
+  *place your graduation and comments*
+* Accent color selection   
+  *place your graduation and comments*
+
+## Bonus
+
+* Task title   
+  *place your graduation and comments*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

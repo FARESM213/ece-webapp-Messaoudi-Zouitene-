@@ -5,7 +5,6 @@ import { useContext } from 'react'
 import { useRouter } from 'next/router'
 import styles from '../../styles/Home.module.css'
 import MD5 from 'crypto-js/md5';
-import Head from 'next/head'
 const supabase = getServiceSupabase();
 
 export const getServerSideProps = async ({ params }) => {
@@ -85,6 +84,7 @@ export default function Profile({ equipe, comment, flag }) {
     <>
       <div className="py-10  max-h-97 max-w-full md:max-w-4xl md:mx-auto">
         <div className={"pays"}>
+
           {user ? (equipe.user_id == user.id ? (<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 " onClick={async () => Update(equipe.id)} >Edit</button>) : <></>) : <></>}
 
           <img src={"https://flagcdn.com/w2560/" + Loadflag(equipe.nom, flag) + ".jpg"} width="100" height="100"></img>
@@ -102,8 +102,6 @@ export default function Profile({ equipe, comment, flag }) {
 
           <label>Composition</label>
           <p type="text" id="equipe" name="equipe"> {equipe.Composition}  </p> <br />
-
-
 
           <label>Continent</label>
           <p type="text" id="continent" name="continent">{equipe.Continent} </p>
