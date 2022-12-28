@@ -173,21 +173,55 @@ Pour le systeme de routing plus avancé concernant la base de donne, nous vous f
 
   ![Login](image/profil.png)
 
-
   > **Graduation** The graduation estimation for this section is : 4/4 (+bonus)
 
 * New articles creation   
-  *place your graduation and comments*
-* New comment creation   
-  *place your graduation and comments*
+
+  We can then create a team once connected. If the created team is a national team, enter correctly its Name and it will be affiliated to you the corresponding flag.A confirmation message is displayed
+
+  ![Login](image/add.png)
+  ![Login](image/finland.png)
+
+  > **Graduation** The graduation estimation for this section is : 4/4 
+
+* New comment creation
+
+  At the end of the page of each team, we can add our comment of support (or other...)
+
+  ![Login](image/123.png)
+  ![Login](image/1234.png)
+
+  > **Graduation** The graduation estimation for this section is : 4/4 
+
 * Resource access control   
-  *place your graduation and comments*
+
+  Concerning the security of our code. We have managed to activate a set of policies in order to grant modification, insertion and reading to accepted users. 
+
+    ![Login](image/RLS.png)
+
+  Thus, everyone can see the teams and their comments but only their creator can modify them. The profiles follow the same logic. Finally, only authenticated users can create new teams or new comments. 
+
+    ![Login](image/RLS2.png)
+
+  The display of the application will behave according to these constraints adding or removing several components
+
+    ![Login](image/RLS3.png)
+
+  > **Graduation** The graduation estimation for this section is : 6/6 
+
 * Article modification   
   *place your graduation and comments*
 * Article removal   
   *place your graduation and comments*
 * Comment modification   
-  *place your graduation and comments*
+
+  A comment can be modified at any time. Here for example, I got the wrong country, I confused the flags and commented for Bosnia... No worries, the comment can be modified.
+  We made sure then when a comment is created, only the author can see the "edit" button, which opens an editing form. 
+  ![Login](image/comu1.png)
+  ![Login](image/comu2.png)
+
+  > **Graduation** The graduation estimation for this section is : 2/2 
+
 * Comment removal   
   *place your graduation and comments*
 * Account settings   
