@@ -31,7 +31,7 @@ export default function Home() {
 
         <a className='card' href="">
         
-          <Link href="/Continent/Amerique">
+          <Link href="/Continent/Amérique">
           <div>
             <h2 >America</h2>
             <img src="amerique.png" width="400" length="400" alt="amerique image"/>
@@ -67,8 +67,6 @@ export default function Home() {
                 </div>
               </Link>
         </a>
-
-    
         </div>
       </main>
       

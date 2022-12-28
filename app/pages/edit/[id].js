@@ -71,16 +71,6 @@ export default function Profile({ equipe,comment }) {
 
       router.push('/equipe')
     }
-
-    async function Update2(id) {
-       alert("Ok pour le moment on fait rien"+id)
-    }
-    async function insert(id) {
-
-      const commentaires =document.getElementById("comm").value;
-      const { error } = await supabase.from('comments').insert({equipe_id:id, user_id:user.id,content:commentaires,user_email:user.email})  
-      router.push('/equipe/'+equipe.id)
-    }
       {
 
             return (
@@ -113,7 +103,7 @@ export default function Profile({ equipe,comment }) {
               
                 <label>Continent</label>
                         <select type="text" id="continent" name="continent" className={styles.li} defaultValue={equipe.Continent|| ''}>
-                            <option type="text" value="amerique" >Amérique</option>
+                            <option type="text" value="Amérique" >Amérique</option>
                             <option type="text"value="Europe">Europe</option>
                             <option type="text"value="Asie">Asie</option>
                             <option type="text" value="Afrique">Afrique</option>

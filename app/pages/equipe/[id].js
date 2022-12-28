@@ -84,7 +84,7 @@ export default function Profile({ equipe, comment, flag }) {
   return (
     <>
       <div className="py-10  max-h-97 max-w-full md:max-w-4xl md:mx-auto">
-        <div className={styles.pays}>
+        <div className={"pays"}>
           {user ? (equipe.user_id == user.id ? (<button className="rounded px-5 py-3 text-white bg-blue-500 hover:bg-blue-300 " onClick={async () => Update(equipe.id)} >Edit</button>) : <></>) : <></>}
 
           <img src={"https://flagcdn.com/w2560/" + Loadflag(equipe.nom, flag) + ".jpg"} width="100" height="100"></img>
@@ -111,12 +111,9 @@ export default function Profile({ equipe, comment, flag }) {
         </div>
 
 
-
-
-
       </div>
 
-      <div className={styles.userform6} >
+      <div className={"userform6"} >
         <h2> Espace Commentaires :  </h2>
         {
           user ? <button className={styles.yes} onClick={async () => insert(equipe.id)} > Add + </button> : <button className={styles.yes} onClick={async () => router.push("/Login")} > Connect </button>

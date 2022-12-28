@@ -561,3 +561,358 @@ margin-right: 1% ;
   background-color:beige;
 }
 
+
+.userform2 {
+  position:static;
+  width: 85%;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 40px 50px; /* ajout d'un marge de 10px à gauche et à droite */
+}
+
+
+
+
+.userform2 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform2 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.userform2 input[type="text"],
+.userform2 input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+
+.userform6{
+  width: 60%;
+  align-items: center;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom: 3%;
+}
+
+
+
+.userform6 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform6 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.userform6 input[type="text"],
+.userform6 input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+.userform3 {
+
+  width: 110%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: -10px -15%; /* ajout d'un marge de 10px à gauche et à droite */
+  align-items: center;
+  height: fit-content;
+  margin-right: 20%;
+  position:static;
+}
+
+
+.orange .userform3 {
+
+  border: 1px solid  rgba(97, 106, 116, 1);
+  border-radius: 5px;
+
+}
+
+.orange .userform2 {
+
+  border: 1px solid  rgba(97, 106, 116, 1);
+  border-radius: 5px;
+
+}
+.orange .userform6 {
+
+  border: 1px solid  rgba(97, 106, 116, 1);
+  border-radius: 5px;
+
+}
+
+
+
+.orange .pays {
+
+  border: 1px solid  rgba(97, 106, 116, 1);
+  border-radius: 5px;
+
+}
+
+
+.orange .addteamform {
+
+  border: 1px solid  rgba(97, 106, 116, 1);
+  border-radius: 5px;
+
+}
+
+
+.green .pays select,
+.dark .pays select{
+
+  color: black;
+}
+
+
+.green .addteamform select,
+ .dark .addteamform select{
+
+  color: black;
+}
+
+
+.blue .userform3 {
+
+  border: 1px solid rgb(7, 61, 169); 
+  border-radius: 5px;
+
+}
+
+.blue .userform2 {
+
+  border: 1px solid  rgb(7, 61, 169); 
+  border-radius: 5px;
+
+}
+
+.blue .userform6 {
+
+  border: 1px solid  rgb(7, 61, 169); 
+  border-radius: 5px;
+
+}
+
+
+.blue .pays {
+
+  border: 1px solid  rgb(7, 61, 169); 
+  border-radius: 5px;
+
+}
+
+
+.blue .addteamform {
+
+  border: 1px solid  rgb(7, 61, 169); 
+  border-radius: 5px;
+
+}
+
+
+.green .userform3 {
+
+  border: 1px solid #ffedd5;
+  border-radius: 5px;
+
+}
+
+.green .userform2 {
+
+  border: 1px solid  #ffedd5;
+  border-radius: 5px;
+
+}
+
+.green .userform6 {
+
+  border: 1px solid  #ffedd5;
+  border-radius: 5px;
+
+}
+
+
+.green .pays {
+
+  border: 1px solid  #ffedd5;
+  border-radius: 5px;
+
+}
+
+
+.green .addteamform {
+
+  border: 1px solid  #ffedd5;
+  border-radius: 5px;
+
+}
+
+
+
+.userform3 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform3 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+.userform4{
+  width: 70%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: -10px 200px; /* ajout d'un marge de 10px à gauche et à droite */
+  align-items: center;
+  height: fit-content;
+  margin-bottom: 50px;
+
+}
+
+.userform4 h2 {
+  text-align: center;
+  font-size:larger;
+}
+
+.userform4 label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+.pays 
+{ 
+  margin-top: 8%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.pays img
+{ 
+  margin-bottom: 3%;
+  margin-left: 45%;
+}
+
+
+.pays button
+{ 
+  margin-left: 90%;
+}
+
+
+
+
+
+
+.addteamform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addteamform label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.addteamform input[type="text"],
+.addteamform input[type="file"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+
+.addteamform button[type="submit"] {
+  width: 100%;
+  background-color: #73a575;
+  color: white;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addteamform button[type="submit"]:hover {
+  background-color: #86c489;
+}
+
+.addteamform select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px; 
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+
+
+
+
+.addteamform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.addteamform label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.addteamform input[type="text"],
+.addteamform input[type="file"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}

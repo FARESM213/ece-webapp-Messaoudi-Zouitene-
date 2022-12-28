@@ -65,14 +65,13 @@ export default function Comments({com,flag}) {
       
        <div className="py-10 min-h-full max-w-full md:max-w-9xl md:mx-auto">
         
-          <div className={styles.userform6} >
+          <div className={"userform6"} >
                     <h2> Espace Commentaires :  </h2>
                   {
                     user?<button className={styles.yes} onClick={async()=>Update(com.id)} >Update </button>: <button className={styles.yes} onClick={async()=>router.push("/Login")} > Connect </button>
                   }
                   <input type="text" id="comm" name="comm" placeholder="Modifiez votre commentaire sur l'equipe" required /> <br/>
                   
-                      
                             <div className='card2' key={com.id}>            
                             <img type='yesbb' src={"https://flagcdn.com/w2560/"+Loadflag(com.equipe_nom,flag)+".jpg"} width="50" length="50" /> 
 
