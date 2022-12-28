@@ -1,63 +1,7 @@
-# Lab2 
-
-##  Introduction
-
-Ce lab est une introduction a l'utilisation de node.js et de ses modules. 
-ygygy
-## Installation
-
-- Installer un IDE tel que [VisualStudioCode](https://code.visualstudio.com/)
-- Installer Node.js voir [ prerequisites](https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/01.prerequisite/index.md#nodejs-installation)
-- Installer nodemon
-- Installer Postman pour les test 
-- Installer [Express](https://www.npmjs.com/package/express#installation)
-- Installer [uuid](https://www.npmjs.com/package/uuid)
-
-```bash
-npm install nodemon
-npm install snap postman
-npm install express
-npm install uuid
-```
-
-## Running options
-
-Nous devons lancer le serveur avant d'essayer d'acceder au site en local.
-
-La commande suivante permet de lancer le site web de maniere a update toute les modifications sans necessairement relancer le serveur.
-```bash
-npm run develop
-```
-Une autre alternative pour lancer le serveur sans mise a jour automatique 
-```bash
-npm start
-```
-Une fois le serveur lancé, http://localhost:8080.
-
-## Routing de Base
-
-Un systeme de routing a été mis en place pour ce Lab3. Afin d'acceder a la notice d'utilisation de ces derniers cliquez sur http://localhost:8080/hello.
-
-## Routing plus avancé
-
-Pour le systeme de routing plus avancé concernant la base de donne, nous vous fournissons une fiche d'informations sur le lien suivant : http://localhost:8080/help.
-
-## Sources utilisées
-
-- <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/index.md>
-- <https://github.com/adaltas/ece-webtech-2022-fall/blob/main/courses/webtech/modules/02.nodejs/lab.md>
-- <https://dev.to/scottydocs/how-to-write-a-kickass-readme-5af9>
-
-## Auteurs
-
-- name : Zouitene Lydia | email : Lydia.zouitene@edu.ece.fr
-- name : Messaoudi Fares | email : Messaoudi.fares@edu.ece.fr
-
-
 
 # Blogging application - ECE Webtech project
 
-*presentation, introduction, ...*
+  Our application is primarily intended for the World Cup to comment on the achievements of each of the different national teams! Everyone can add their favorite team and share their feelings. It's also a way to get information on different points such as the name of the coach, the captain of the team or the choice of the device of each team.
 
 ## Production 
 
@@ -209,10 +153,17 @@ Pour le systeme de routing plus avancé concernant la base de donne, nous vous f
 
   > **Graduation** The graduation estimation for this section is : 6/6 
 
-* Article modification   
-  *place your graduation and comments*
-* Article removal   
-  *place your graduation and comments*
+* Article modification/Article removal
+
+  The modification page of each team is therefore only accessible by the user from the profile page or the information page of the team in question. 
+  A confirmation message is also sent upon successful modification.
+
+  Deleting a team is done in the same way. Modification or deletion of a team shares the same pages and access
+
+  ![Login](image/modif.png)
+
+   > **Graduation** The graduation estimation for this section is : 4/4 , 2/2 (+bonus) allows delete in the profil page too 
+
 * Comment modification   
 
   A comment can be modified at any time. Here for example, I got the wrong country, I confused the flags and commented for Bosnia... No worries, the comment can be modified.
@@ -223,23 +174,59 @@ Pour le systeme de routing plus avancé concernant la base de donne, nous vous f
   > **Graduation** The graduation estimation for this section is : 2/2 
 
 * Comment removal   
-  *place your graduation and comments*
+
+  We made sure that to delete a comment, only the author can see the "delete" button.
+  Deleting a comment can be done on the profile page or on the page where the comment was posted. This deletion is done in real time.
+
+  ![Login](image/delete.png)
+
+  > **Graduation** The graduation estimation for this section is : 2/2 
+
 * Account settings   
-  *place your graduation and comments*
+
+  You can also modify the user's personal information. The modification is done in an active way. The password modification will be done by mail.
+
+  ![Login](image/profu2.png)
+  ![Login](image/profu.png)
+
+  > **Graduation** The graduation estimation for this section is : 3/4 (+bonus)
+
 * WYSIWYG integration   
-  *place your graduation and comments*
+
+   Our forms respect the WYSIWYG as you can see on the previous example
+
+  > **Graduation** The graduation estimation for this section is : 2/2 
+
 * Gravatar integration   
-  *place your graduation and comments*
+
+  As you can see on the different screens. The profile pictures are loaded with gravatar. We can then display them on the profile or in the comments.*(Go to comments section or profil and see)*
+
+  > **Graduation** The graduation estimation for this section is : 2/2 
+
 * Light/dark theme   
-  *place your graduation and comments*
+
+  Our app syncs with your browser configuration and goes into dark mode if necessary 
+
+    ![Login](image/dark.png)
+
+  > **Graduation** The graduation estimation for this section is : 2/2
+
 * Accent color selection   
-  *place your graduation and comments*
+
+  As you could see during the different screens. We can change the color at any time thanks to the toogle button in the navbar.
+
+    ![Login](image/nav.png)
+
+  > **Graduation** The graduation estimation for this section is : 4/4
 
 ## Bonus
 
-* Task title   
-  *place your graduation and comments*
-
+* Search for teams based on an attribute ( Home page) 
+* Summary of comments and teams created in the profile page 
+* Ability to delete articles/comments in multiple pages 
+* Downloading information in an active way
+* Syncronization of the Auth with the different themes of the site
+* ReadMe very well detailed ?
 
 
 
