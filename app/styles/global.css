@@ -26,17 +26,20 @@
   padding: 1%;
 }
 
-.changement img
-{
- width: 75;
- height: 38;
-}
-
 .footic 
 {
- margin-left: 32%;
- font-size: 75px;
+ margin: auto;
+ margin-left: 20%;
+ font-size: 300%;
 }
+
+.user 
+{
+  margin-top: 5%;
+  margin-left: 2%;
+  position: absolute;
+}
+
 
 
 
